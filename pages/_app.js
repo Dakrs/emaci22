@@ -1,7 +1,13 @@
-import '../styles/globals.css'
+import 'tailwindcss/tailwind.css'
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import Layout from '@components/common/layout'
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+function App({ Component, pageProps }) {
+  return (
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  )
 }
 
-export default MyApp
+export default App

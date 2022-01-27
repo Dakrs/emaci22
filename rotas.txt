@@ -1,0 +1,10 @@
+https://fpacompeticoes.pt/webservice/api/competitions/554/schedule/
+
+https://fpacompeticoes.pt/webservice/api/competitions/554/schedule/1/
+
+
+https://fpacompeticoes.pt/webservice/api/event/inscriptions/10139/
+
+https://fpacompeticoes.pt/webservice/api/event/startlists/10139/
+
+https://fpacompeticoes.pt/webservice/api/event/results/10139/
