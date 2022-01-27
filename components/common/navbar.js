@@ -25,7 +25,7 @@ const Navbar = (props) => {
     <div className="w-full z-50 lg:w-1/10 lg:h-screen sticky top-0 bg-white">
       <nav className="w-full flex flex-row lg:h-screen lg:flex-col justify-center bg-white">
         <div className="flex items-center justify-center w-28 lg:w-full lg:h-28 bg-white">
-          <Link href="/">
+          <Link href="/" passHref>
             <a className="h-24 w-24 relative">
               <Image
                 src='/icons/emaci.png'
@@ -39,26 +39,26 @@ const Navbar = (props) => {
         </div>
         <div className={`flex items-center justify-center max-w-28 w-full lg:max-w-none lg:h-28 ${flags['schedule'] ? 'bg-slate-800 text-white' : 'bg-white text-slate-800 dark:text-slate-400'} `}>
           <Link href="/schedule">
-            <div className={`${flags['schedule'] ? '' : 'hover:text-gray-800 hover:bg-gray-100 dark:hover:text-white dark:hover:bg-gray-600'} w-full h-full flex flex-col rounded items-center justify-center  transition-colors duration-200  text-center cursor-pointer`}>
+            <a className={`${flags['schedule'] ? '' : 'hover:text-gray-800 hover:bg-gray-100 dark:hover:text-white dark:hover:bg-gray-600'} w-full h-full flex flex-col rounded items-center justify-center  transition-colors duration-200  text-center cursor-pointer`}>
                 <BsCalendarDate className="h-10 w-10" />
                 <span className="text-lg font-normal">Schedule</span>
-            </div>
+            </a>
           </Link>
         </div>
         <div className={`flex items-center justify-center max-w-28 w-full lg:max-w-none lg:h-28 ${flags['results'] ? 'bg-slate-800 text-white' : 'bg-white text-slate-800 dark:text-slate-400'} `}>
           <Link href="/results">
-            <div className={`${flags['results'] ? '' : 'hover:text-gray-800 hover:bg-gray-100 dark:hover:text-white dark:hover:bg-gray-600'} w-full h-full flex flex-col rounded items-center justify-center  transition-colors duration-200  text-center cursor-pointer`}>
+            <a className={`${flags['results'] ? '' : 'hover:text-gray-800 hover:bg-gray-100 dark:hover:text-white dark:hover:bg-gray-600'} w-full h-full flex flex-col rounded items-center justify-center  transition-colors duration-200  text-center cursor-pointer`}>
                 <BiTrophy className="h-10 w-10" />
                 <span className="text-lg font-normal">Results</span>
-            </div>
+            </a>
           </Link>
         </div>
         <div className={`flex items-center justify-center max-w-28 w-full lg:max-w-none lg:h-28 ${flags['info'] ? 'bg-slate-800 text-white' : 'bg-white text-slate-800 dark:text-slate-400'} `}>
           <Link href="/info">
-            <div className={`${flags['info'] ? '' : 'hover:text-gray-800 hover:bg-gray-100 dark:hover:text-white dark:hover:bg-gray-600'} w-full h-full flex flex-col rounded items-center justify-center  transition-colors duration-200  text-center cursor-pointer`}>
+            <a className={`${flags['info'] ? '' : 'hover:text-gray-800 hover:bg-gray-100 dark:hover:text-white dark:hover:bg-gray-600'} w-full h-full flex flex-col rounded items-center justify-center  transition-colors duration-200  text-center cursor-pointer`}>
                 <AiOutlineInfoCircle className="h-10 w-10" />
                 <span className="text-lg font-normal">Information</span>
-            </div>
+            </a>
           </Link>
         </div>
       </nav>
