@@ -9,6 +9,9 @@ import { GiPodium } from 'react-icons/gi';
 import { HiOutlineDocumentReport } from 'react-icons/hi';
 import Link from "next/link";
 import { TBRow, TBRowMobile } from '@components/common/table';
+import { hocFetcherWithoutId } from '@components/common/hocFetcher';
+import { useRouter } from 'next/router'
+
 
 
 
@@ -51,23 +54,23 @@ function CompressedColumn({event}) {
               <Menu.Item>
                 <div className={`text-gray-900 group flex rounded-md items-center w-full px-2 py-2 text-sm`}>
                   <AiOutlineClockCircle className="w-5 h-5 mr-2"  />
-                  {event.date}
+                  {event.hora}
                 </div>
               </Menu.Item>
               <Menu.Item>
                 <div className={`text-gray-900 group flex rounded-md items-center w-full px-2 py-2 text-sm`}>
                   <BsGenderAmbiguous className="w-5 h-5 mr-2"  />
-                  {event.sex}
+                  {event.sexo}
                 </div>
               </Menu.Item>
               <Menu.Item>
                 <div className={`text-gray-900 group flex rounded-md items-center w-full px-2 py-2 text-sm`}>
                   <CgTimelapse className="w-5 h-5 mr-2"  />
-                  {event.round}
+                  {event.tipo}
                 </div>
               </Menu.Item>
               <Menu.Item>
-                {event.athletes ? (
+                {event.inscriptions ? (
                   <Link href={`/athletes/${event.id}`}>
                     <div className={`hover:text-white hover:bg-slate-800 cursor-pointer text-gray-900 group flex rounded-md items-center w-full px-2 py-2 text-sm`}>
                       <HiOutlineDocumentReport className="w-5 h-5 mr-2"  />
@@ -123,28 +126,28 @@ const TBRowFull = ({event,last}) => {
   return (
     <>
       <TBRow>
-        <td className={`px-5 py-5 border-b border-gray-200 bg-white text-sm ${last ? 'rounded-bl-xl' : ''}`}>
+        <td className={`px-5 py-5 border-b border-gray-200 bg-white text-sm`}>
           <p className="text-gray-900 whitespace-no-wrap">
-              {event.date}
+              {event.hora}
           </p>
         </td>
         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
           <p className="text-gray-900 whitespace-no-wrap">
-              {event.sex}
+              {event.sexo}
           </p>
         </td>
         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
           <p className="text-gray-900 whitespace-no-wrap">
-              {event.name}
+              {event.nome}
           </p>
         </td>
         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
           <p className="text-gray-900 whitespace-no-wrap">
-              {event.round}
+              {event.tipo}
           </p>
         </td>
         <td className={`px-5 py-5 border-b border-gray-200 bg-white text-sm`}>
-          {event.athletes ?
+          {event.inscriptions ?
             (<Link href={`/athletes/${event.id}`}>
                 <p className="text-gray-900 hover:text-gray-500 whitespace-no-wrap cursor-pointer">
                     Athletes
@@ -171,7 +174,7 @@ const TBRowFull = ({event,last}) => {
             )
           }
         </td>
-        <td className={`px-5 py-5 border-b border-gray-200 bg-white text-sm ${last ? 'rounded-br-xl' : ''}`}>
+        <td className={`px-5 py-5 border-b border-gray-200 bg-white text-sm`}>
           {event.results ?
             (<Link href={`/results/${event.id}`}>
                 <p className="text-gray-900 hover:text-gray-500 whitespace-no-wrap cursor-pointer">
@@ -187,17 +190,17 @@ const TBRowFull = ({event,last}) => {
         </td>
       </TBRow>
       <TBRowMobile>
-        <td className={`px-5 py-5 border-b border-gray-200 bg-white text-sm ${last ? 'rounded-bl-xl' : ''}`}>
+        <td className={`px-5 py-5 border-b border-gray-200 bg-white text-sm`}>
           <p className="text-gray-900 whitespace-no-wrap">
-              {event.name}
+              {event.nome}
           </p>
         </td>
         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
           <p className="text-gray-900 whitespace-no-wrap">
-              {event.sex}
+              {event.sexo}
           </p>
         </td>
-        <td className={`px-5 py-5 border-b border-gray-200 bg-white text-sm ${last ? 'rounded-br-xl' : ''}`}>
+        <td className={`px-5 py-5 border-b border-gray-200 bg-white text-sm`}>
           <CompressedColumn event={event} />
         </td>
       </TBRowMobile>
@@ -208,38 +211,51 @@ const TBRowFull = ({event,last}) => {
 const examples = [
   {
     id: 123123123,
-    date: '16:30',
+    hora: '16:30',
     sex: 'Male',
     round: 'Qualification',
-    name: 'Long Jump',
+    nome: 'Long Jump',
     startlist: true,
     results: true,
-    athletes: true
+    inscriptions: true
   },
   {
     id: 12312312323,
-    date: '16:30',
+    hora: '16:30',
     sex: 'Male',
     round: 'Qualification',
-    name: 'Long Jump',
+    nome: 'Long Jump',
     startlist: true,
     results: true,
-    athletes: true
+    inscriptions: true
   },
   {
     id: 12312312331,
-    date: '16:30',
+    hora: '16:30',
     sex: 'Male',
     round: 'Qualification',
-    name: 'Long Jump',
+    nome: 'Long Jump',
     startlist: false,
     results: false,
-    athletes: true
+    inscriptions: true
   },
 ]
 
-export default function Schedule() {
-  const [index,setIndex] = useState(0);
+function validate_day(day){
+
+  var intDay = parseInt(day)
+
+  return day && intDay >= 0 && intDay <= 7;
+}
+
+const Schedule = (props) => {
+  const { data } = props;
+  const router = useRouter()
+  const { day } = router.query
+
+  var st_index = validate_day(day) ? parseInt(day) : 0;
+
+  const [index,setIndex] = useState(st_index);
 
   const next = () => {
     let i = index + 1;
@@ -253,7 +269,15 @@ export default function Schedule() {
       setIndex(i % days.length)
     else
       setIndex(days.length - 1)
+  }
 
+  const get = () => {
+    const key = index.toString();
+
+    if (key in data)
+      return (data[key])
+
+    return []
   }
 
 
@@ -275,9 +299,9 @@ export default function Schedule() {
         <div className="w-full">
             <div className="container mx-auto">
               <div className="py-8 ">
-                <div className="inline-block min-w-full shadow-lg rounded-xl">
+                <div className="min-w-full shadow-lg rounded-xl overflow-x-auto">
                     <table className="min-w-full leading-normal">
-                        <thead className="bg-zinc-50 rounded-xl">
+                        <thead className="bg-zinc-50 rounded-xl" onClick={() => alert(JSON.stringify(data))}>
                             <TBRow>
                                 <th scope="col" className="px-5 py-3  text-slate-800 text-left text-sm uppercase font-bold rounded-tl-xl">
                                     Local Time
@@ -311,7 +335,7 @@ export default function Schedule() {
                             </TBRowMobile>
                         </thead>
                         <tbody>
-                          {examples.map((item,i) => {
+                          {get(data).map((item,i) => {
                             return (
                               <TBRowFull key={`event-schedule-${item.id}`} event={item} last={i == examples.length-1}/>
                             )
@@ -325,3 +349,5 @@ export default function Schedule() {
       </div>
   )
 }
+
+export default hocFetcherWithoutId(Schedule,'https://fpacompeticoes.pt/webservice/api/competitions/554/schedule')

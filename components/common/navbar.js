@@ -33,6 +33,7 @@ const Navbar = (props) => {
                 layout="fill" // required
                 objectFit="cover" // change to suit your needs
                 className="rounded-full" // just an example
+                priority
               />
             </a>
           </Link>

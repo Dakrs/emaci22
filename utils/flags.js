@@ -51,7 +51,11 @@ const translate2to3 = (code) => {
     'GBR': 'GB',
   }
 
-  return lib[code];
+  if (code in lib){
+    return lib[code]
+  }
+
+  return 'EU';
 }
 
 export {
