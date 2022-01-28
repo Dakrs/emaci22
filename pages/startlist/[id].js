@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Flags from 'country-flag-icons/react/3x2';
 import {translate2to3} from '@utils/flags';
-import { hocFetcher } from '@components/common/hocFetcher';
+import { HocFetcher } from '@components/common/hocFetcher';
 import Link from "next/link"
 import { GenericTable } from '@components/common/table';
 
@@ -91,7 +91,7 @@ const startlist = (props) => {
   )
 }
 
-export default hocFetcher(startlist,'https://fpacompeticoes.pt/webservice/api/event/startlists/10139')
+export default HocFetcher(startlist,'https://fpacompeticoes.pt/webservice/api/event/startlists/10139')
 
 
 export async function getStaticPaths() {

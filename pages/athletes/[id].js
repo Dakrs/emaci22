@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Flags from 'country-flag-icons/react/3x2';
 import {translate2to3} from '@utils/flags';
-import { hocFetcher } from '@components/common/hocFetcher';
+import { HocFetcher } from '@components/common/hocFetcher';
 import Link from "next/link"
 
 
@@ -89,7 +89,7 @@ const athletes = (props) => {
 }
 
 //export default hocFetcher(athletes,'https://fpacompeticoes.pt/webservice/api/event/inscriptions/10139/',[examples2,true])
-export default hocFetcher(athletes,'https://fpacompeticoes.pt/webservice/api/event/inscriptions/10139')
+export default HocFetcher(athletes,'https://fpacompeticoes.pt/webservice/api/event/inscriptions/10139')
 
 
 export async function getStaticPaths() {

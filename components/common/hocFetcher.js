@@ -3,50 +3,50 @@ import Error from '@components/common/error';
 import { fetcher,fetchMock } from '@utils/fetcher';
 import useSWR from 'swr'
 
-const hocFetcherWithoutId = (WrappedComponent, urlData) => {
-  return hocFetcher(WrappedComponent, urlData, [null,false], true);
+const HocFetcherWithoutId = (WrappedComponent, urlData) => {
+  return HocFetcher(WrappedComponent, urlData, [null,false], true);
 }
 
-const hocFetcher = (WrappedComponent, urlData, testing = [null,false], ignoreId = false) => props => {
-  /**
-  const { id } = props;
+const HocFetcher = (WrappedComponent, urlData, testing = [null,false], ignoreId = false) => {
 
-  if (!id)
-    return(<SideLoading />);
+    const HOC = (props) => {
+      const { id } = props;
 
-  const { data,error } = useSWR(`${urlData}/${id}`,fetcher)*/
+      var [test_data,testing_flag] = testing;
 
-  const { id } = props;
+      var url = urlData;
+      var fetcherFinal = fetcher;
 
-  if (!ignoreId){
-    if (!id)
-      return(<SideLoading />);
-  }
+      if (!testing_flag && !ignoreId){
+        if (!id)
+          url = null
+        else //add id to urldata when link is accomplished useSWR(`${urlData}/${id}`,fetcher)
+          url = `${urlData}`
+      }
+      else if (testing_flag) {
+        fetcherFinal = fetchMock(test_data)
+      }
 
-  var [test_data,testing_flag] = testing;
+      const { data,error } = useSWR(url,fetcherFinal)
 
-  if (!testing_flag)
-    if (!ignoreId) //add id to urldata when link is accomplished
-      var { data,error } = useSWR(`${urlData}`,fetcher)
-    else
-      var { data,error } = useSWR(`${urlData}`,fetcher)
-  else {
-    var { data,error } = useSWR(urlData,fetchMock(test_data))
-  }
+      if (error)
+        return (<Error code={error.status} />)
+      else if (!data){
+        return(<SideLoading />);
+      }
 
-  if (error)
-    return (<Error code={error.status} />)
-  else if (!data){
-    return(<SideLoading />);
-  }
+      return (
+        <WrappedComponent data={data} {...props} />
+      )
+    }
 
-  return (
-    <WrappedComponent data={data} {...props} />
-  )
+    HOC.displayName = 'Hoc';
+
+    return HOC;
 }
 
 
 export {
-  hocFetcher,
-  hocFetcherWithoutId
+  HocFetcher,
+  HocFetcherWithoutId
 }

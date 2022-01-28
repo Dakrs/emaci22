@@ -9,7 +9,7 @@ import { GiPodium } from 'react-icons/gi';
 import { HiOutlineDocumentReport } from 'react-icons/hi';
 import Link from "next/link";
 import { TBRow, TBRowMobile } from '@components/common/table';
-import { hocFetcherWithoutId } from '@components/common/hocFetcher';
+import { HocFetcherWithoutId } from '@components/common/hocFetcher';
 import { useRouter } from 'next/router'
 
 
@@ -71,11 +71,11 @@ function CompressedColumn({event}) {
               </Menu.Item>
               <Menu.Item>
                 {event.inscriptions ? (
-                  <Link href={`/athletes/${event.id}`}>
-                    <div className={`hover:text-white hover:bg-slate-800 cursor-pointer text-gray-900 group flex rounded-md items-center w-full px-2 py-2 text-sm`}>
+                  <Link href={`/athletes/${event.id}`} passHref>
+                    <a className={`hover:text-white hover:bg-slate-800 cursor-pointer text-gray-900 group flex rounded-md items-center w-full px-2 py-2 text-sm`}>
                       <HiOutlineDocumentReport className="w-5 h-5 mr-2"  />
                       Athletes
-                    </div>
+                    </a>
                   </Link>
                 ) : (
                   <div className={`text-gray-200 group cursor-not-allowed flex rounded-md items-center w-full px-2 py-2 text-sm`}>
@@ -86,11 +86,11 @@ function CompressedColumn({event}) {
               </Menu.Item>
               <Menu.Item>
                 {event.startlist ? (
-                  <Link href={`/startlist/${event.id}`}>
-                    <div className={`hover:text-white hover:bg-slate-800 cursor-pointer text-gray-900 group flex rounded-md items-center w-full px-2 py-2 text-sm`}>
+                  <Link href={`/startlist/${event.id}`} passHref>
+                    <a className={`hover:text-white hover:bg-slate-800 cursor-pointer text-gray-900 group flex rounded-md items-center w-full px-2 py-2 text-sm`}>
                       <FaClipboardList className="w-5 h-5 mr-2"  />
                       Startlist
-                    </div>
+                    </a>
                   </Link>
                 ) : (
                   <div className={`text-gray-200 group cursor-not-allowed flex rounded-md items-center w-full px-2 py-2 text-sm`}>
@@ -101,11 +101,11 @@ function CompressedColumn({event}) {
               </Menu.Item>
               <Menu.Item>
                 {event.results ? (
-                  <Link href={`/results/${event.id}`}>
-                    <div className={`hover:text-white hover:bg-slate-800 cursor-pointer text-gray-900 group flex rounded-md items-center w-full px-2 py-2 text-sm`}>
+                  <Link href={`/results/${event.id}`} passHref>
+                    <a className={`hover:text-white hover:bg-slate-800 cursor-pointer text-gray-900 group flex rounded-md items-center w-full px-2 py-2 text-sm`}>
                       <GiPodium className="w-5 h-5 mr-2"  />
                       Results
-                    </div>
+                    </a>
                   </Link>
                 ) : (
                   <div className={`text-gray-200 group cursor-not-allowed flex rounded-md items-center w-full px-2 py-2 text-sm`}>
@@ -148,10 +148,10 @@ const TBRowFull = ({event,last}) => {
         </td>
         <td className={`px-5 py-5 border-b border-gray-200 bg-white text-sm`}>
           {event.inscriptions ?
-            (<Link href={`/athletes/${event.id}`}>
-                <p className="text-gray-900 hover:text-gray-500 whitespace-no-wrap cursor-pointer">
+            (<Link href={`/athletes/${event.id}`} passHref>
+                <a className="text-gray-900 hover:text-gray-500 whitespace-no-wrap cursor-pointer">
                     Athletes
-                </p>
+                </a>
              </Link>
             ):(
               <p className="text-gray-200 whitespace-no-wrap cursor-not-allowed">
@@ -162,10 +162,10 @@ const TBRowFull = ({event,last}) => {
         </td>
         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
           {event.startlist ?
-            (<Link href={`/startlist/${event.id}`}>
-                <p className="text-gray-900 hover:text-gray-500 whitespace-no-wrap cursor-pointer">
+            (<Link href={`/startlist/${event.id}`} passHref>
+                <a className="text-gray-900 hover:text-gray-500 whitespace-no-wrap cursor-pointer">
                     Startlist
-                </p>
+                </a>
              </Link>
             ):(
               <p className="text-gray-200 whitespace-no-wrap cursor-not-allowed">
@@ -176,10 +176,10 @@ const TBRowFull = ({event,last}) => {
         </td>
         <td className={`px-5 py-5 border-b border-gray-200 bg-white text-sm`}>
           {event.results ?
-            (<Link href={`/results/${event.id}`}>
-                <p className="text-gray-900 hover:text-gray-500 whitespace-no-wrap cursor-pointer">
+            (<Link href={`/results/${event.id}`} passHref>
+                <a className="text-gray-900 hover:text-gray-500 whitespace-no-wrap cursor-pointer">
                     Results
-                </p>
+                </a>
              </Link>
             ):(
               <p className="text-gray-200 whitespace-no-wrap cursor-not-allowed">
@@ -350,4 +350,4 @@ const Schedule = (props) => {
   )
 }
 
-export default hocFetcherWithoutId(Schedule,'https://fpacompeticoes.pt/webservice/api/competitions/554/schedule')
+export default HocFetcherWithoutId(Schedule,'https://fpacompeticoes.pt/webservice/api/competitions/554/schedule')
