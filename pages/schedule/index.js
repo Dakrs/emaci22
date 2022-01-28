@@ -11,6 +11,8 @@ import Link from "next/link";
 import { TBRow, TBRowMobile } from '@components/common/table';
 import { HocFetcherWithoutId } from '@components/common/hocFetcher';
 import { useRouter } from 'next/router'
+import { TiArrowSortedDown, TiArrowSortedUp, TiArrowUnsorted } from 'react-icons/ti';
+
 
 
 
@@ -122,7 +124,7 @@ function CompressedColumn({event}) {
   )
 }
 
-const TBRowFull = ({event,last}) => {
+const TBRowFull = ({event}) => {
   return (
     <>
       <TBRow>
@@ -256,11 +258,15 @@ const Schedule = (props) => {
   var st_index = validate_day(day) ? parseInt(day) : 0;
 
   const [index,setIndex] = useState(st_index);
+  const [search,setSearch] = useState('');
+  const [sorting,setSorting] = useState([0,0,0])
 
   const next = () => {
     let i = index + 1;
     setIndex(i % days.length)
   }
+
+  const copy = {...data}
 
   const prev = () => {
     let i = index - 1;
@@ -280,6 +286,82 @@ const Schedule = (props) => {
     return []
   }
 
+  const update_sort = (i) => {
+    const res = [0,0,0];
+
+    res[i] = (sorting[i] + 1) % 3;
+    setSorting(res)
+  }
+
+  const sort = (vals) => {
+
+    var i = 0
+    while (i < sorting.length) {
+      if (sorting[i] != 0)
+        break;
+      i++
+    }
+
+    /**
+    hora: '16:30',
+    sex: 'Male',
+    nome: 'Long Jump',
+    */
+
+    var func = undefined;
+
+    switch (i) {
+      case 0:
+        switch (sorting[i]) {
+          case 1: //cres
+            func = (ev1,ev2) => ev1.hora > ev2.hora
+            break;
+          case 2: //des
+            func = (ev1,ev2) => ev1.hora < ev2.hora
+            break;
+          default:
+        }
+        break;
+      case 1:
+        switch (sorting[i]) {
+          case 1: //cres
+            func = (ev1,ev2) => ev1.sexo > ev2.sexo
+            break;
+          case 2: //des
+            func = (ev1,ev2) => ev1.sexo < ev2.sexo
+            break;
+          default:
+        }
+        break;
+      case 2:
+        switch (sorting[i]) {
+          case 1: //cres
+            func = (ev1,ev2) => ev1.nome > ev2.nome
+            break;
+          case 2: //des
+            func = (ev1,ev2) => ev1.nome < ev2.nome
+            break;
+          default:
+        }
+        break
+      default:
+    }
+
+    return vals.sort(func)
+  }
+
+  const sortIconState = (state) => {
+    switch (state) {
+      case 0:
+        return (<TiArrowUnsorted className="h-6 w-6" />)
+        break;
+      case 1:
+        return (<TiArrowSortedUp className="h-6 w-6" />)
+      case 2:
+        return (<TiArrowSortedDown className="h-6 w-6" />)
+      default:
+    }
+  }
 
   return (
       <div className="min-h-screen flex flex-col items-center w-full bg-slate-100 p-10 lg:p-16">
@@ -300,17 +382,40 @@ const Schedule = (props) => {
             <div className="container mx-auto">
               <div className="py-8 ">
                 <div className="min-w-full shadow-lg rounded-xl overflow-x-auto">
-                    <table className="min-w-full leading-normal">
-                        <thead className="bg-zinc-50 rounded-xl" onClick={() => alert(JSON.stringify(data))}>
+                    <table className="min-w-full table-auto leading-normal">
+                        <thead className="bg-zinc-50 rounded-xl" onClick={() => console.log(search.toUpperCase())}>
+                            <tr>
+                              <th scope="col" className="px-5 py-3  text-slate-800  text-center text-sm md:text-lg uppercase font-bold">
+                                Search:
+                              </th>
+                              <th colSpan={6} scope="col" className="px-5 py-3 bg-white text-slate-800  text-left text-sm uppercase font-bold">
+                                <input value={search} onChange={(e) => (setSearch(e.target.value))} className="w-full bg-white rounded border border-gray-300 focus:border-slate-500 focus:ring-2 focus:ring-slate-200 text-base outline-none text-gray-700 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+                              </th>
+                            </tr>
                             <TBRow>
-                                <th scope="col" className="px-5 py-3  text-slate-800 text-left text-sm uppercase font-bold rounded-tl-xl">
-                                    Local Time
+                                <th scope="col" className="px-5 py-3  text-slate-800 text-left text-sm uppercase font-bold" onClick={() => update_sort(0)}>
+                                    <div className="w-full flex flex-row items-center justify-between">
+                                     Local Time
+                                     <span>
+                                      {sortIconState(sorting[0])}
+                                     </span>
+                                    </div>
                                 </th>
-                                <th scope="col" className="px-5 py-3  text-slate-800  text-left text-sm uppercase font-bold">
-                                    Sex
+                                <th scope="col" className="px-5 py-3  text-slate-800  text-left text-sm uppercase font-bold" onClick={() => update_sort(1)}>
+                                  <div className="w-full flex flex-row items-center justify-between">
+                                   Sex
+                                   <span>
+                                    {sortIconState(sorting[1])}
+                                   </span>
+                                  </div>
                                 </th>
-                                <th scope="col" className="px-5 py-3  text-slate-800  text-left text-sm uppercase font-bold">
-                                    Event
+                                <th scope="col" className="px-5 py-3  text-slate-800  text-left text-sm uppercase font-bold" onClick={() => update_sort(2)}>
+                                  <div className="w-full flex flex-row items-center justify-between">
+                                   Event
+                                   <span>
+                                    {sortIconState(sorting[2])}
+                                   </span>
+                                  </div>
                                 </th>
                                 <th scope="col" className="px-5 py-3  text-slate-800  text-left text-sm uppercase font-bold">
                                     Round
@@ -319,15 +424,25 @@ const Schedule = (props) => {
                                 </th>
                                 <th scope="col" className="px-5 py-3  text-slate-800  text-left text-sm uppercase font-bold">
                                 </th>
-                                <th scope="col" className="px-5 py-3  text-slate-800  text-left text-sm uppercase font-bold rounded-tr-xl">
+                                <th scope="col" className="px-5 py-3  text-slate-800  text-left text-sm uppercase font-bold">
                                 </th>
                             </TBRow>
                             <TBRowMobile className="table-row lg:hidden">
-                                <th scope="col" className="px-5 py-3  text-slate-800 text-left text-sm uppercase font-bold rounded-tl-xl">
-                                    Event
+                                <th scope="col" className="px-5 py-3  text-slate-800 text-left text-sm uppercase font-bold rounded-tl-xl" onClick={() => update_sort(2)}>
+                                  <div className="w-full flex flex-row items-center justify-between">
+                                     Event
+                                     <span>
+                                      {sortIconState(sorting[2])}
+                                     </span>
+                                  </div>
                                 </th>
-                                <th scope="col" className="px-5 py-3  text-slate-800 text-left text-sm uppercase font-bold rounded-tl-xl">
-                                    Sex
+                                <th scope="col" className="px-5 py-3  text-slate-800 text-left text-sm uppercase font-bold rounded-tl-xl" onClick={() => update_sort(1)}>
+                                  <div className="w-full flex flex-row items-center justify-between">
+                                     Sex
+                                     <span>
+                                      {sortIconState(sorting[1])}
+                                     </span>
+                                  </div>
                                 </th>
                                 <th scope="col" className="px-5 py-3  text-slate-800  text-left text-sm uppercase font-bold rounded-tr-xl">
                                     Information
@@ -335,9 +450,13 @@ const Schedule = (props) => {
                             </TBRowMobile>
                         </thead>
                         <tbody>
-                          {get(data).map((item,i) => {
+                          {sort(get(data)).map((item,i) => {
+                            const upper = item.nome.toUpperCase();
+                            if (search !== '' && !upper.startsWith(search.toUpperCase())) {
+                              return (null)
+                            }
                             return (
-                              <TBRowFull key={`event-schedule-${item.id}`} event={item} last={i == examples.length-1}/>
+                              <TBRowFull key={`event-schedule-${item.id}`} event={item}/>
                             )
                           })}
                         </tbody>

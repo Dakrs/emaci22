@@ -4,47 +4,37 @@ import {translate2to3} from '@utils/flags';
 import { HocFetcher } from '@components/common/hocFetcher';
 import Link from "next/link"
 import { GenericTable } from '@components/common/table';
+import { FilterSortTable } from '@components/common/table'
+
 
 
 const startlist = (props) => {
   //const { data,error } = useSWR(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/field/fieldData/${id}`,fetcher,{refreshInterval: 250})
   const { data,id } = props;
 
-  const mapping = (key) => {
-    switch (key) {
-      case 'Code':
-        return 'dorsal'
-        break;
-      case 'Name':
-        return 'nome'
-        break;
-      case 'Nacionality':
-        return 'clube'
-        break;
-      default:
-        return ''
-    }
-  }
-
-  const prepare_data = (key) => {
-    const res = []
-
-    data.prova.series[key].forEach((item, i) => {
-      var Flag = Flags[translate2to3(item.clube)];
-      res.push({
-        nome: item.nome,
-        dorsal: item.dorsal,
-        clube: (
+  const headers = [
+    {
+      Header: 'Code',
+      accessor: 'dorsal'
+    },
+    {
+      Header: 'Name',
+      accessor: 'nome',
+    },
+    {
+      Header: 'Nacionality',
+      accessor: 'clube',
+      Cell: ({value}) => {
+        var Flag = Flags[translate2to3(value)];
+        return (
           <div className="w-full flex flex-row items-center justify-start">
-             <p>{item.clube}</p>
-             <Flag className="h-6 w-8 ml-1" />
+             <Flag className="h-6 w-8 mr-1" />
+             <p>{value}</p>
           </div>
         )
-      })
-    });
-
-    return res;
-  }
+      }
+    }
+  ]
 
   const key_series = () => {
     const res = []
@@ -79,7 +69,7 @@ const startlist = (props) => {
                   <div key={`${id}-series-${item}`} className="w-full">
                     <h2 className={`w-full font-bebas-neue select-none uppercase text-2xl sm:text-3xl font-black text-center ${index % 2 === 0 ? 'sm:text-right' : 'sm:text-left'} leading-none dark:text-write text-slate-800`}>Serie {item}</h2>
                     <div className="py-8 ">
-                      <GenericTable data={prepare_data(item)} id={`${id}-serie-${item}`} headers={['Code','Name','Nacionality']} mapping={mapping} />
+                      <FilterSortTable dataI={data.prova.series[item]} headers={headers} />
                     </div>
                   </div>
                 )
