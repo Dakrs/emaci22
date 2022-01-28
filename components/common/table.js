@@ -1,6 +1,6 @@
 import React, {useMemo,useState} from 'react'
 import { useTable, useGlobalFilter, useAsyncDebounce,useSortBy } from 'react-table'
-import matchSorter from 'match-sorter'
+import  { matchSorter }  from 'match-sorter'
 import { TiArrowSortedDown, TiArrowSortedUp, TiArrowUnsorted } from 'react-icons/ti';
 
 const TBRowMobile = ({children}) => {
@@ -49,15 +49,15 @@ function fuzzyTextFilterFn(rows, id, filterValue) {
 // Let the table remove the filter if the string is empty
 fuzzyTextFilterFn.autoRemove = val => !val
 
-const FilterSortTable = ({dataI,headers}) => {
+const FilterSortTable = ({dataI,headers,id}) => {
   const data = React.useMemo(
      () => dataI,
-     []
+     [dataI]
   )
 
   const columns = React.useMemo(
     () => headers,
-    []
+    [headers]
   )
 
   const filterTypes = React.useMemo(
@@ -108,10 +108,10 @@ const FilterSortTable = ({dataI,headers}) => {
              />
            </th>
          </tr>
-         {headerGroups.map(headerGroup => (
-           <tr {...headerGroup.getHeaderGroupProps()}>
-             {headerGroup.headers.map(column => (
-               <th {...column.getHeaderProps(column.getSortByToggleProps())} className="px-5 py-3 text-slate-800 text-left text-sm uppercase font-bold">
+         {headerGroups.map((headerGroup,i) => (
+           <tr key={`${id}-header-${i}`} {...headerGroup.getHeaderGroupProps()}>
+             {headerGroup.headers.map((column,ci) => (
+               <th key={`${id}-headerCol-${ci}`} {...column.getHeaderProps(column.getSortByToggleProps())} className="px-5 py-3 text-slate-800 text-left text-sm uppercase font-bold">
                  <div className="w-full flex flex-row justify-between">
                   {column.render('Header')}
                   <span>
@@ -128,13 +128,13 @@ const FilterSortTable = ({dataI,headers}) => {
          ))}
        </thead>
        <tbody {...getTableBodyProps()}>
-         {rows.map(row => {
+         {rows.map((row,ri) => {
            prepareRow(row)
            return (
-             <tr {...row.getRowProps()}>
-               {row.cells.map(cell => {
+             <tr key={`${id}-row-${ri}`} {...row.getRowProps()}>
+               {row.cells.map((cell,rci) => {
                  return (
-                   <td {...cell.getCellProps()} className="px-5 py-3 text-left border-b border-gray-200 bg-white text-sm">{cell.render('Cell')}</td>
+                   <td key={`${id}-rowCell-${rci}`} {...cell.getCellProps()} className="px-5 py-3 text-left border-b border-gray-200 bg-white text-sm">{cell.render('Cell')}</td>
                  )
                })}
              </tr>

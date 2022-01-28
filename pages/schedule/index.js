@@ -383,7 +383,7 @@ const Schedule = (props) => {
               <div className="py-8 ">
                 <div className="min-w-full shadow-lg rounded-xl overflow-x-auto">
                     <table className="min-w-full table-auto leading-normal">
-                        <thead className="bg-zinc-50 rounded-xl" onClick={() => console.log(search.toUpperCase())}>
+                        <thead className="bg-zinc-50 rounded-xl">
                             <tr>
                               <th scope="col" className="px-5 py-3  text-slate-800  text-center text-sm md:text-lg uppercase font-bold">
                                 Search:

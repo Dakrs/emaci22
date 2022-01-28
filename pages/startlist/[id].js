@@ -69,7 +69,7 @@ const startlist = (props) => {
                   <div key={`${id}-series-${item}`} className="w-full">
                     <h2 className={`w-full font-bebas-neue select-none uppercase text-2xl sm:text-3xl font-black text-center ${index % 2 === 0 ? 'sm:text-right' : 'sm:text-left'} leading-none dark:text-write text-slate-800`}>Serie {item}</h2>
                     <div className="py-8 ">
-                      <FilterSortTable dataI={data.prova.series[item]} headers={headers} />
+                      <FilterSortTable dataI={data.prova.series[item]} headers={headers} id={`${id}-series-${index}`}/>
                     </div>
                   </div>
                 )

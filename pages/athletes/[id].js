@@ -58,7 +58,7 @@ const athletes = (props) => {
       <div className="w-full">
           <div className="container mx-auto">
             <div className="py-8 ">
-              <FilterSortTable dataI={data.prova.atletas} headers={headers} />
+              <FilterSortTable dataI={data.prova.atletas} headers={headers} id={`${id}-athletes-`} />
             </div>
           </div>
       </div>
