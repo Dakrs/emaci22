@@ -7,7 +7,7 @@ import Head from 'next/head'
 
 const Layout = ({children}) => {
   return (
-    <div className="flex flex-col lg:flex-row overflow-hidden">
+    <div className="relative w-screen">
       <Head>
         <title>EMACI 2022</title>
         <meta name="description" content="European Master Athletics Championships Indoor" />
@@ -16,7 +16,7 @@ const Layout = ({children}) => {
 
       <Navbar />
 
-      <main className="min-h-screen w-full">
+      <main className="absolute top-24 w-full lg:top-0 lg:left-1/10 min-h-screen lg:w-9/10">
         {children}
         <Footer />
       </main>
