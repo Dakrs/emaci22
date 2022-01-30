@@ -21,7 +21,7 @@ const HocFetcher = (WrappedComponent, urlData, testing = [null,false], ignoreId 
         if (!id)
           url = null
         else //add id to urldata when link is accomplished useSWR(`${urlData}/${id}`,fetcher)
-          url = `${urlData}`
+          url = `${urlData}/${id}`
       }
       else if (testing_flag) {
         fetcherFinal = fetchMock(test_data)

@@ -14,6 +14,10 @@ const startlist = (props) => {
 
   const headers = [
     {
+        Header: 'Track',
+        accessor: 'pista'
+    },
+    {
       Header: 'Code',
       accessor: 'dorsal'
     },
@@ -81,7 +85,7 @@ const startlist = (props) => {
   )
 }
 
-export default HocFetcher(startlist,'https://fpacompeticoes.pt/webservice/api/event/startlists/10139')
+export default HocFetcher(startlist,'https://fpacompeticoes.pt/webservice/api/event/startlists')
 
 
 export async function getStaticPaths() {
