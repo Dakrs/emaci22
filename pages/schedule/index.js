@@ -294,7 +294,6 @@ const Schedule = (props) => {
   }
 
   const sort = (vals) => {
-
     var i = 0
     while (i < sorting.length) {
       if (sorting[i] != 0)
@@ -314,10 +313,22 @@ const Schedule = (props) => {
       case 0:
         switch (sorting[i]) {
           case 1: //cres
-            func = (ev1,ev2) => ev1.hora > ev2.hora
+            func = (ev1,ev2) => {
+              if (ev1.hora > ev2.hora)
+                return 1
+              if (ev1.hora < ev2.hora)
+                return -1
+              return 0
+            }
             break;
           case 2: //des
-            func = (ev1,ev2) => ev1.hora < ev2.hora
+            func = (ev1,ev2) => {
+              if (ev1.hora > ev2.hora)
+                return -1
+              if (ev1.hora < ev2.hora)
+                return 1
+              return 0
+            }
             break;
           default:
         }
@@ -325,10 +336,22 @@ const Schedule = (props) => {
       case 1:
         switch (sorting[i]) {
           case 1: //cres
-            func = (ev1,ev2) => ev1.sexo > ev2.sexo
+            func = (ev1,ev2) => {
+              if (ev1.sexo > ev2.sexo)
+                return 1
+              if (ev1.sexo < ev2.sexo)
+                return -1
+              return 0
+            }
             break;
           case 2: //des
-            func = (ev1,ev2) => ev1.sexo < ev2.sexo
+            func = (ev1,ev2) => {
+              if (ev1.sexo > ev2.sexo)
+                return -1
+              if (ev1.sexo < ev2.sexo)
+                return 1
+              return 0
+            }
             break;
           default:
         }
@@ -336,10 +359,22 @@ const Schedule = (props) => {
       case 2:
         switch (sorting[i]) {
           case 1: //cres
-            func = (ev1,ev2) => ev1.nome > ev2.nome
+            func = (ev1,ev2) => {
+              if (ev1.nome > ev2.nome)
+                return 1
+              if (ev1.nome < ev2.nome)
+                return -1
+              return 0
+            }
             break;
           case 2: //des
-            func = (ev1,ev2) => ev1.nome < ev2.nome
+            func = (ev1,ev2) => {
+              if (ev1.nome > ev2.nome)
+                return -1
+              if (ev1.nome < ev2.nome)
+                return 1
+              return 0
+            }
             break;
           default:
         }
