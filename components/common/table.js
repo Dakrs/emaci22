@@ -114,13 +114,15 @@ const FilterSortTable = ({dataI,headers,id}) => {
                <th key={`${id}-headerCol-${ci}`} {...column.getHeaderProps(column.getSortByToggleProps())} className="px-5 py-3 text-slate-800 text-left text-sm uppercase font-bold">
                  <div className="w-full flex flex-row justify-between">
                   {column.render('Header')}
-                  <span>
-                   {column.isSorted
-                     ? column.isSortedDesc
-                       ? (<TiArrowSortedDown className="h-6 w-6" />)
-                       : (<TiArrowSortedUp className="h-6 w-6" />)
-                     : (<TiArrowUnsorted className="h-6 w-6" />)}
-                  </span>
+                  {column.canSort && (
+                    <span>
+                     {column.isSorted
+                       ? column.isSortedDesc
+                         ? (<TiArrowSortedDown className="h-6 w-6" />)
+                         : (<TiArrowSortedUp className="h-6 w-6" />)
+                       : (<TiArrowUnsorted className="h-6 w-6" />)}
+                    </span>
+                  )}
                  </div>
                </th>
              ))}

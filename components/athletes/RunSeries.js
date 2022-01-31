@@ -3,6 +3,8 @@ import Flags from 'country-flag-icons/react/3x2';
 import {translate2to3} from '@utils/flags';
 import {useState} from 'react'
 import Modal from '@components/common/modal'
+import Image from 'next/image'
+
 
 const RunSeries = ({data,id}) => {
   const states = Array(data.prova.count).fill(false);
@@ -82,23 +84,34 @@ const RunSeries = ({data,id}) => {
     <div className="w-full">
       {Object.keys(series).map((item,i) => (
         <div key={`${id}-results-${i}`} className="w-full">
-          <div className={`flex w-full ${i % 2 === 0 ? 'sm:flex-row-reverse' : 'sm:flex-row'} flex-col justify-between item-center`}>
+          <div className={`flex w-full ${i % 2 === 0 ? 'sm:flex-row-reverse' : 'sm:flex-row'} flex-col justify-between items-center`}>
             <div>
               <h2 className={`w-full font-bebas-neue select-none uppercase text-3xl sm:text-4xl font-black text-center ${i % 2 === 0 ? 'sm:text-right' : 'sm:text-left'} leading-none dark:text-write text-slate-800`}>Serie {item}</h2>
               {series[item].vento && series[item].vento !== "" && (
                 <h2 className={`w-full font-bebas-neue select-none uppercase text-2xl sm:text-3xl font-black text-center ${i % 2 === 0 ? 'sm:text-right' : 'sm:text-left'} leading-none dark:text-write text-slate-800`}>Wind, {series[item].vento}</h2>
               )}
             </div>
-            <div className="flex items-center justify-center my-4">
-              <div onClick={() => openI(i)} className="px-6 py-2 text-lg uppercase font-semibold text-center rounded text-white bg-green-300 hover:bg-green-400 cursor-pointer">Photofinish</div>
-            </div>
+            {series[item].foto && (
+              <div className="flex items-center justify-center my-4">
+                <div onClick={() => openI(i)} className="px-6 py-2 text-lg uppercase font-semibold text-center rounded text-white bg-green-300 hover:bg-green-400 cursor-pointer">Photofinish</div>
+              </div>
+            )}
           </div>
           <div className="py-8 ">
             <FilterSortTable dataI={series[item].atlethes} headers={headers} id={`${id}-results-${i}`}/>
           </div>
+          {series[item].foto && (
           <Modal title={`Photofinish of serie ${item}`} state={isOpen[i]} close={() => closeI(i)}>
-            <img className="w-full" src={series[item].foto} />
+              <div className="w-full h-32 md:h-60 relative">
+                <Image
+                  src={series[item].foto}
+                  alt={`Photofinish-${id}-serie-${i}`}
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
           </Modal>
+          )}
         </div>
       ))}
     </div>

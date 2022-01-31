@@ -5,6 +5,12 @@ import {translate2to3} from '@utils/flags';
 import { HocFetcher } from '@components/common/hocFetcher';
 import Link from "next/link"
 import RunSeries from '@components/athletes/RunSeries';
+import LaunchSeries from '@components/athletes/LaunchSeries';
+import VerticalJumpSeries from '@components/athletes/VerticalJumpSeries';
+import HorizontalJumpSeries from '@components/athletes/HorizontalJumpSeries';
+
+
+
 
 
 const results = (props) => {
@@ -22,13 +28,13 @@ const results = (props) => {
 
   switch (data.prova.tipo) {
     case 2: //
-      component = (<div>Saltos verticais ainda por implementar</div>)
+      component = (<VerticalJumpSeries data={data} id={id} />)
       break;
     case 3: //
-      component = (<div>Saltos horizontais ainda por implementar</div>)
+      component = (<HorizontalJumpSeries data={data} id={id} />)
       break;
     case 4: //
-      component = (<div>Lançamentos ainda por implementar</div>)
+      component = (<LaunchSeries data={data} id={id}/>)
       break;
     default:
       component = (<RunSeries data={data} id={id}/>)

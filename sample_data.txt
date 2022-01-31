@@ -43,3 +43,47 @@ Corridas:
     }
   }
 }
+
+Lançamentos:
+{
+  "prova": {"nome": "Lan\u00e7amento do Peso", "dia": 1, "tipo": 4, "count": 1, "series": {
+   "1": {"info": {"vento": null, "lancamentos": 6, "saltos": null, "regua": "", "foto": null},
+      "atletas": [
+        {"nome": "Valdemar Dantas", "dorsal": 7507, "clube": "ADCL", "marca": "13.34", "posicao": 1, "escalao": "JUV", "resultados": "13.34,13.23,X,X,X,13.24", "obs_mar": null, "obs_pos": null},
+        {"nome": "Diogo Gomes", "dorsal": 3727, "clube": "CSGAIA", "marca": "12.34", "posicao": 2, "escalao": "JUV", "resultados": "12.34,11.61,11.48,11.16,11.89,X", "obs_mar": null, "obs_pos": null},
+        {"nome": "Hugo Duro", "dorsal": 6040, "clube": "CTMVPA", "marca": "11.28", "posicao": 3, "escalao": "JUV", "resultados": "10.60,10.22,X,10.51,11.28,X", "obs_mar": null, "obs_pos": null},
+        {"nome": "Filipe Vieira", "dorsal": 7728, "clube": "CYCL", "marca": "10.47", "posicao": 4, "escalao": "JUV", "resultados": "10.47,10.26,9.75,9.33,9.86,9.69", "obs_mar": null, "obs_pos": null},
+        {"nome": "V\u00edtor Soares", "dorsal": 7587, "clube": "CAOV", "marca": "09.68", "posicao": 5, "escalao": "JUV", "resultados": "9.18,9.68,9.33,7.17,X,8.11", "obs_mar": null, "obs_pos": null},
+        {"nome": "Francisco Silva", "dorsal": 1325, "clube": "CAB", "marca": "09.05", "posicao": 6, "escalao": "JUV", "resultados": "9.05,8.38,8.64,8.74,8.53,8.99", "obs_mar": null, "obs_pos": null},
+        {"nome": "Joel Borges", "dorsal": 101, "clube": "CTMVPA", "marca": "07.11", "posicao": 7, "escalao": "INI", "resultados": "7.11,6.42,6.52,6.91,6.61,6.47", "obs_mar": null, "obs_pos": null},
+        {"nome": "Daniel Cibr\u00e3o", "dorsal": 1614, "clube": "AMONT", "marca": "06.74", "posicao": 8, "escalao": "JUV", "resultados": "5.72,6.70,6.74,6.36,6.21,5.25", "obs_mar": null, "obs_pos": null},
+        {"nome": "Rodrigo Silva", "dorsal": 5048, "clube": "CAF-SCF", "marca": "06.21", "posicao": 9, "escalao": "JUV", "resultados": "X,X,6.21, , ,", "obs_mar": null, "obs_pos": null},
+        {"nome": "Andr\u00e9 Macedo", "dorsal": 4563, "clube": "CAF-SCF", "marca": "x", "posicao": 99999, "escalao": "INI", "resultados": "X,X,X, , ,", "obs_mar": null, "obs_pos": "NM"},
+        {"nome": "Jaime Silva", "dorsal": 5051, "clube": "CAF-SCF", "marca": "x", "posicao": 99999, "escalao": "JUV", "resultados": "X,X,X, , ,", "obs_mar": null, "obs_pos": "NM"}
+      ]
+  }
+}
+}
+}
+
+
+{
+
+  "prova": {"nome": "Triplo Salto", "dia": 1, "tipo": 3, "count": 1, "series": {
+    "1": {"info": {"vento": null, "lancamentos": null, "saltos": 6, "regua": "", "foto": null},
+    "atletas": [
+      {"nome": "Ana Lucia Tima", "dorsal": 250, "clube": "DOM", "marca": "13.84", "posicao": 1, "escalao": null, "resultados": "13.53,0.60,13.84,-2.1,13.74,-1.2,13.83,0.60,13.83,-0.5,X,", "obs_mar": "MR", "obs_pos": null},
+      {"nome": "Lecabela Quaresma", "dorsal": 251, "clube": "JOMA", "marca": "12.91", "posicao": 2, "escalao": "SEN", "resultados": "12.56,-1.2,12.70,-1.5,12.88,1.40,X, ,X, ,12.91,-0.6", "obs_mar": null, "obs_pos": null},
+      {"nome": "Rosa Djombate", "dorsal": 256, "clube": "SCB", "marca": "12.31", "posicao": 3, "escalao": "JUN", "resultados": "X, ,11.57,0.40,12.31,0.90,12.07,1.30,X, ,12.04,-0.9", "obs_mar": null, "obs_pos": null},
+      {"nome": "Suzana Cruz", "dorsal": 254, "clube": "GRE-AA", "marca": "12.12", "posicao": 4, "escalao": "SEN", "resultados": "11.66,0.20,12.12, ,X, ,11.82,-1.9,X, ,X,", "obs_mar": null, "obs_pos": null},
+      {"nome": "Mariana Novo", "dorsal": 255, "clube": "ACPV", "marca": "11.74", "posicao": 5, "escalao": "SUB-23", "resultados": "11.74,-0.2,X, ,X, ,11.74,-0.8,11.65,1.30,X,", "obs_mar": null, "obs_pos": null},
+      {"nome": "Milena Lucena", "dorsal": 339, "clube": "GDE", "marca": "11.24", "posicao": 6, "escalao": "JUN", "resultados": "11.00,-0.8,11.04,0.70,11.24,-1.1,-, ,-, ,-,", "obs_mar": null, "obs_pos": null},
+      {"nome": "Ana Rita Silva", "dorsal": 257, "clube": "MAC", "marca": "10.93", "posicao": 7, "escalao": "SUB-23", "resultados": "X, ,10.93,-1.1,10.91,-0.3,X, ,X, ,X,", "obs_mar": null, "obs_pos": null},
+      {"nome": "Shaina Mags", "dorsal": 253, "clube": "ADRAP", "marca": "x", "posicao": 99999, "escalao": "SEN", "resultados": ", , , , , , , , , , ,", "obs_mar": null, "obs_pos": "NM"},
+      {"nome": "Ana Oliveira", "dorsal": 252, "clube": "GAF", "marca": "x", "posicao": 99999, "escalao": "SEN", "resultados": "X, ,X, ,X, , , , , , ,", "obs_mar": null, "obs_pos": "NM"},
+      {"nome": "Liuba Zald\u00edvar", "dorsal": 249, "clube": "ECU", "marca": "x", "posicao": 99999, "escalao": null, "resultados": "X, ,X, ,X, , , , , , ,", "obs_mar": null, "obs_pos": "NM"}
+    ]
+    }
+  }
+ }
+}
