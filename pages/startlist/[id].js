@@ -26,7 +26,7 @@ const startlist = (props) => {
       accessor: 'nome',
     },
     {
-      Header: 'Nacionality',
+      Header: 'Country',
       accessor: 'clube',
       Cell: ({value}) => {
         var Flag = Flags[translate2to3(value)];
@@ -71,7 +71,7 @@ const startlist = (props) => {
               key_series().map((item,index) => {
                 return (
                   <div key={`${id}-series-${item}`} className="w-full">
-                    <h2 className={`w-full font-bebas-neue select-none uppercase text-2xl sm:text-3xl font-black text-center ${index % 2 === 0 ? 'sm:text-right' : 'sm:text-left'} leading-none dark:text-write text-slate-800`}>Serie {item}</h2>
+                    <h2 className={`w-full font-bebas-neue select-none uppercase text-2xl sm:text-3xl font-black text-center ${index % 2 === 0 ? 'sm:text-right' : 'sm:text-left'} leading-none dark:text-write text-slate-800`}>Heat {item}</h2>
                     <div className="py-8 ">
                       <FilterSortTable dataI={data.prova.series[item]} headers={headers} id={`${id}-series-${index}`}/>
                     </div>

@@ -14,7 +14,7 @@ const HorizontalJumpSeries = ({data,id}) => {
 
       var headers = [
         {
-            Header: 'Position',
+            Header: 'Pos',
             accessor: 'posicao'
         },
         {
@@ -26,7 +26,7 @@ const HorizontalJumpSeries = ({data,id}) => {
           accessor: 'nome',
         },
         {
-          Header: 'Nacionality',
+          Header: 'Country',
           accessor: 'clube',
           Cell: ({value}) => {
             var Flag = Flags[translate2to3(value)];
@@ -37,6 +37,10 @@ const HorizontalJumpSeries = ({data,id}) => {
               </div>
             )
           }
+        },
+        {
+          Header: 'Echelon',
+          accessor: 'escalao'
         },
         {
           Header: 'Result',
@@ -65,6 +69,7 @@ const HorizontalJumpSeries = ({data,id}) => {
         atlethe.clube = item.clube;
         atlethe.marca = item.obs_mar ? `${item.marca} (${item.obs_mar})` : item.marca;
         atlethe.posicao = item.obs_pos ? item.obs_pos : item.posicao;
+        atlethe.escalao = item.escalao
 
         var temp_res = item.resultados.split(',')
         for(var i = 0; i < value.info.saltos; i++){
@@ -91,9 +96,9 @@ const HorizontalJumpSeries = ({data,id}) => {
     <div className="w-full">
       {Object.keys(series).map((item,i) => (
         <div key={`${id}-results-${i}`} className="w-full">
-          <div className={`flex w-full ${i % 2 === 0 ? 'sm:flex-row-reverse' : 'sm:flex-row'} flex-col justify-between item-center`}>
+          <div className={`flex w-full ${i % 2 === 0 ? 'sm:flex-row-reverse' : 'sm:flex-row'} flex-col justify-between items-center`}>
             <div>
-              <h2 className={`w-full font-bebas-neue select-none uppercase text-3xl sm:text-4xl font-black text-center ${i % 2 === 0 ? 'sm:text-right' : 'sm:text-left'} leading-none dark:text-write text-slate-800`}>Serie {item}</h2>
+              <h2 className={`w-full font-bebas-neue select-none uppercase text-3xl sm:text-4xl font-black text-center ${i % 2 === 0 ? 'sm:text-right' : 'sm:text-left'} leading-none dark:text-write text-slate-800`}>Heat {item}</h2>
               {series[item].vento && series[item].vento !== "" && (
                 <h2 className={`w-full font-bebas-neue select-none uppercase text-2xl sm:text-3xl font-black text-center ${i % 2 === 0 ? 'sm:text-right' : 'sm:text-left'} leading-none dark:text-write text-slate-800`}>Wind, {series[item].vento}</h2>
               )}

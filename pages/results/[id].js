@@ -8,6 +8,8 @@ import RunSeries from '@components/athletes/RunSeries';
 import LaunchSeries from '@components/athletes/LaunchSeries';
 import VerticalJumpSeries from '@components/athletes/VerticalJumpSeries';
 import HorizontalJumpSeries from '@components/athletes/HorizontalJumpSeries';
+import CourierSeries from '@components/athletes/CourierSeries';
+
 
 
 
@@ -35,6 +37,9 @@ const results = (props) => {
       break;
     case 4: //
       component = (<LaunchSeries data={data} id={id}/>)
+      break;
+    case 5:
+      component = (<CourierSeries data={data} id={id}/>)
       break;
     default:
       component = (<RunSeries data={data} id={id}/>)

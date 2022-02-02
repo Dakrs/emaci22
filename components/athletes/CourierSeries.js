@@ -2,8 +2,23 @@ import { FilterSortTable } from '@components/common/table'
 import Flags from 'country-flag-icons/react/3x2';
 import {translate2to3} from '@utils/flags';
 import {useState} from 'react'
+import Modal from '@components/common/modal'
+import Image from 'next/image'
 
-const LaunchSeries = ({data,id}) => {
+const CourierSeries = ({data,id}) => {
+  const states = Array(data.prova.count).fill(false);
+  const [isOpen, setIsOpen] = useState(states)
+
+  const closeI = (i) => {
+    const res = Array(data.prova.count).fill(false);
+    setIsOpen(res);
+  }
+
+  const openI = (i) => {
+    const res = [...isOpen]
+    res[i] = true
+    setIsOpen(res);
+  }
 
   const series = {}
 
@@ -11,6 +26,7 @@ const LaunchSeries = ({data,id}) => {
       var processed_data = []
       var seriei = {}
       seriei.vento = value.info.vento;
+      seriei.foto = value.info.foto;
 
       value.atletas.forEach((item, i) => {
         var atlethe = {}
@@ -73,7 +89,7 @@ const LaunchSeries = ({data,id}) => {
 
       for(var i = 0; i < value.info.lancamentos; i++){
         headers.push({
-          Header: `${i+1}`,
+          Header: `Ath. ${i+1}`,
           accessor: `res${i}`,
           disableSortBy: true
         })
@@ -96,14 +112,31 @@ const LaunchSeries = ({data,id}) => {
                 <h2 className={`w-full font-bebas-neue select-none uppercase text-2xl sm:text-3xl font-black text-center ${i % 2 === 0 ? 'sm:text-right' : 'sm:text-left'} leading-none dark:text-write text-slate-800`}>Wind, {series[item].vento}</h2>
               )}
             </div>
+            {series[item].foto && (
+              <div className="flex items-center justify-center my-4">
+                <div onClick={() => openI(i)} className="px-6 py-2 text-lg uppercase font-semibold text-center rounded text-white bg-green-300 hover:bg-green-400 cursor-pointer">Photofinish</div>
+              </div>
+            )}
           </div>
           <div className="py-8 ">
             <FilterSortTable dataI={series[item].atlethes} headers={series[item].headers} id={`${id}-results-${i}`}/>
           </div>
+          {series[item].foto && (
+          <Modal title={`Photofinish of serie ${item}`} state={isOpen[i]} close={() => closeI(i)}>
+              <div className="w-full h-32 md:h-60 relative">
+                <Image
+                  src={series[item].foto}
+                  alt={`Photofinish-${id}-serie-${i}`}
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
+          </Modal>
+          )}
         </div>
       ))}
     </div>
   )
 }
 
-export default LaunchSeries;
+export default CourierSeries;

@@ -20,7 +20,7 @@ const athletes = (props) => {
       accessor: 'datanascimento'
     },
     {
-      Header: 'Nacionality',
+      Header: 'Country',
       accessor: 'clube',
       Cell: ({value}) => {
         var Flag = Flags[translate2to3(value)];
