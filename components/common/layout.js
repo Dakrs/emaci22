@@ -12,7 +12,7 @@ const Layout = ({children}) => {
         <title>EMACI 2022</title>
         <meta name="description" content="European Master Athletics Championships Indoor" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
         <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@700&display=swap" rel="stylesheet"/>
         <link rel="icon" href="/icons/emaci.png" />
       </Head>
