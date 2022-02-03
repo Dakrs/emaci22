@@ -16,7 +16,7 @@ const RunSeries = ({data,id}) => {
         accessor: 'posicao'
     },
     {
-      Header: 'Code',
+      Header: 'BIB',
       accessor: 'dorsal'
     },
     {

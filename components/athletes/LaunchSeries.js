@@ -41,7 +41,7 @@ const LaunchSeries = ({data,id}) => {
             accessor: 'posicao'
         },
         {
-          Header: 'Code',
+          Header: 'BIB',
           accessor: 'dorsal'
         },
         {

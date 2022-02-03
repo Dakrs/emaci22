@@ -1,6 +1,12 @@
 import TimeLeft from '@components/frontpage/timeLeft'
 import Title from '@components/frontpage/title'
 
+/**
+<div className="absolute -z-10 top-0 brightness-50 min-h-screen w-full lg:w-1/2 bg-yellow-200 bg-center bg-cover bg-banner-image-left">
+</div>
+<div className="absolute -z-10 top-0  brightness-50 left-1/2 min-h-screen w-0 lg:w-1/2 bg-center bg-cover bg-banner-image-right">
+</div>
+*/
 
 export default function Home() {
   return (
@@ -9,9 +15,7 @@ export default function Home() {
           <Title />
           <TimeLeft />
         </div>
-        <div className="absolute -z-10 top-0 brightness-50 min-h-screen w-full lg:w-1/2 bg-yellow-200 bg-center bg-cover bg-banner-image-left">
-        </div>
-        <div className="absolute -z-10 top-0  brightness-50 left-1/2 min-h-screen w-0 lg:w-1/2 bg-center bg-cover bg-banner-image-right">
+        <div className="absolute -z-10 top-0 min-h-screen w-full bg-center bg-cover bg-banner-image-main">
         </div>
 
         <div className="w-full h-72 bg-yellow-200">

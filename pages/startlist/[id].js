@@ -18,7 +18,7 @@ const startlist = (props) => {
         accessor: 'pista'
     },
     {
-      Header: 'Code',
+      Header: 'BIB',
       accessor: 'dorsal'
     },
     {

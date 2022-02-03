@@ -25,6 +25,7 @@ module.exports = {
       backgroundImage: {
         'banner-image-left': "url('/images/t1.jpeg')",
         'banner-image-right': "url('/images/t3.jpeg')",
+        'banner-image-main': "url('/images/backgroundmain.jpg')",
       },
       fontSize: {
         'i-5': ['5rem','5rem'],
@@ -39,6 +40,9 @@ module.exports = {
       inset: {
         '1/10': '10%',
         '2/10': '20%'
+      },
+      fontFamily: {
+        'title': '"Montserrat Alternates",sans-serif'
       },
     },
   },

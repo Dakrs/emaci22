@@ -438,7 +438,7 @@ const Schedule = (props) => {
                                 </th>
                                 <th scope="col" className="px-5 py-3  text-slate-800  text-left text-sm uppercase font-bold" onClick={() => update_sort(1)}>
                                   <div className="w-full flex flex-row items-center justify-between">
-                                   Sex
+                                   Gender
                                    <span>
                                     {sortIconState(sorting[1])}
                                    </span>

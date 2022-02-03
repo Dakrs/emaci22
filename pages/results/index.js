@@ -1,5 +1,5 @@
 import { HocFetcherWithoutId } from '@components/common/hocFetcher';
-import { FilterSortTable } from '@components/common/table'
+import { FilterSortTableWithPage } from '@components/common/table'
 import Link from "next/link"
 
 
@@ -15,7 +15,7 @@ const AvailResults = (props) => {
         accessor: 'nome'
     },
     {
-      Header: 'Sex',
+      Header: 'Gender',
       accessor: 'sexo'
     },
     {
@@ -44,7 +44,7 @@ const AvailResults = (props) => {
 
       <div className="w-full py-4">
           <div className="container mx-auto">
-            <FilterSortTable dataI={data.resultados} headers={headers} id={`ex-results`}/>
+            <FilterSortTableWithPage dataI={data.resultados} headers={headers} id={`ex-results`}/>
           </div>
       </div>
     </div>

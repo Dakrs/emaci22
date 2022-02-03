@@ -37,7 +37,11 @@ const CourierSeries = ({data,id}) => {
         atlethe.posicao = item.obs_pos ? item.obs_pos : item.posicao;
         atlethe.escalao = item.escalao
 
-        var temp_res = item.resultados.split(',')
+        var temp_res;
+        if (item.resultados && item.resultados !== "")
+          temp_res = item.resultados.split(',')
+        else
+          temp_res = []
         for(var i = 0; i < value.info.lancamentos; i++){
           if (i < temp_res.length){
             atlethe[`res${i}`] = temp_res[i]
@@ -57,7 +61,7 @@ const CourierSeries = ({data,id}) => {
             accessor: 'posicao'
         },
         {
-          Header: 'Code',
+          Header: 'BIB',
           accessor: 'dorsal'
         },
         {
@@ -123,7 +127,7 @@ const CourierSeries = ({data,id}) => {
           </div>
           {series[item].foto && (
           <Modal title={`Photofinish of serie ${item}`} state={isOpen[i]} close={() => closeI(i)}>
-              <div className="w-full h-32 md:h-60 relative">
+              <div className="w-full h-24 md:h-32 relative">
                 <Image
                   src={series[item].foto}
                   alt={`Photofinish-${id}-serie-${i}`}
