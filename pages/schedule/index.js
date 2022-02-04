@@ -504,4 +504,4 @@ const Schedule = (props) => {
   )
 }
 
-export default HocFetcherWithoutId(Schedule,'https://fpacompeticoes.pt/webservice/api/competitions/554/schedule')
+export default HocFetcherWithoutId(Schedule,`${process.env.NEXT_PUBLIC_API_ENDPOINT}/webservice/api/competitions/1/schedule`)

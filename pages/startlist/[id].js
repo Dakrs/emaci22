@@ -122,7 +122,7 @@ const startlist = (props) => {
   )
 }
 
-export default HocFetcher(startlist,'https://fpacompeticoes.pt/webservice/api/event/startlists')
+export default HocFetcher(startlist,`${process.env.NEXT_PUBLIC_API_ENDPOINT}/webservice/api/event/startlists`)
 
 
 export async function getStaticPaths() {

@@ -69,7 +69,7 @@ const results = (props) => {
   )
 }
 
-export default HocFetcher(results,'https://fpacompeticoes.pt/webservice/api/event/results')
+export default HocFetcher(results,`${process.env.NEXT_PUBLIC_API_ENDPOINT}/webservice/api/event/results`)
 
 export async function getStaticPaths() {
   // Get the paths we want to pre-render based on posts

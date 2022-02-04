@@ -67,7 +67,7 @@ const athletes = (props) => {
 }
 
 //export default hocFetcher(athletes,'https://fpacompeticoes.pt/webservice/api/event/inscriptions/10139/',[examples2,true])
-export default HocFetcher(athletes,'https://fpacompeticoes.pt/webservice/api/event/inscriptions')
+export default HocFetcher(athletes,`${process.env.NEXT_PUBLIC_API_ENDPOINT}/webservice/api/event/inscriptions`)
 
 
 export async function getStaticPaths() {

@@ -107,4 +107,4 @@ https://fpacompeticoes.pt/webservice/api/competitions/554/results
 */
 
 
-export default HocFetcherWithoutId(AvailResults,'https://fpacompeticoes.pt/webservice/api/competitions/554/results');
+export default HocFetcherWithoutId(AvailResults,`${process.env.NEXT_PUBLIC_API_ENDPOINT}/webservice/api/competitions/1/results`);
