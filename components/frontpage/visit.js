@@ -14,21 +14,21 @@ const Visit = (props) => {
     </div>
   )
 }*/
+import React from "react";
 import Image from 'next/image'
-
 
 const Visit = (props) => {
   return (
     <div className="w-full px-4 py-6 sm:p-10 lg:p-16 bg-slate-100">
       <div className="w-full md:w-2/3 container mx-auto">
-        <a href="" className="relative flex items-end w-full bg-slate-100 h-96 group">
-          <Image layout="fill" alt="Modded Bike" objectFit="cover" className="rounded-xl  transition-opacity group-hover:opacity-90" src="/images/imagem_topo.jpg"/>
-          <div className="relative w-full p-6 tracking-widest text-center text-white transition-colors bg-slate-800 sm:w-2/3 group-hover:bg-slate-700 rounded-bl-xl">
+        <a href="https://www.emaci2022braga.com/en" className="relative flex items-end w-full bg-slate-100 h-72 md:h-96 group">
+          <Image layout="fill" alt="Modded Bike" objectFit="cover" className="transition-opacity group-hover:opacity-90" src="/images/imagem_topo.jpg"/>
+          <div className="relative w-full p-6 tracking-widest text-center text-white transition-colors bg-slate-800 sm:w-2/3 group-hover:bg-slate-700">
             <strong className="text-lg uppercase">
               Emaci
             </strong>
             <p className="mt-1 text-xs font-medium uppercase">
-              Find out more in the event's main website
+              {'Find out more in the event\'s main website'}
             </p>
           </div>
         </a>
