@@ -1,8 +1,30 @@
 {
   "contacts": {
-    "instagram": "s",
-    "facebook": "d",
-    "email": "c",
-    "whatsapp": "d"
-  }
+    "instagram": "https://www.instagram.com/emaci2020braga/",
+    "facebook": "https://www.facebook.com/EMACI-BRAGA-2022-106835004004780",
+    "email": "mailto: emaci.2020.info@gmail.com"
+  },
+  "poweredby": [
+    {
+      "name": "Associação de Atletismo de Braga",
+      "src": "/images/powered/AAB.png",
+      "aspect": "aspect-w-1 aspect-h-1",
+      "link": "https://www.aabraga.pt/",
+      "alt": "This is alt text"
+    },
+    {
+      "name": "Federação Nacional Atletismo",
+      "src": "/images/powered/FPA.jpg",
+      "aspect": "aspect-w-1 aspect-h-1",
+      "link": "https://fpatletismo.pt/",
+      "alt": "This is alt text"
+    },
+    {
+      "name": "Câmara Municipal de Braga",
+      "src": "/images/powered/CMBraga.jpg",
+      "aspect": "aspect-w-1 aspect-h-1",
+      "link": "https://www.cm-braga.pt/",
+      "alt": "This is alt text"
+    }
+  ]
 }

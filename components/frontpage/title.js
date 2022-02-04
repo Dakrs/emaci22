@@ -14,6 +14,9 @@ const Title = (props) => {
           Indoor
       </h1>
       <p className="w-full text-right text-white">20 - 27 February, 2022 in Braga, Portugal</p>
+      <h1 className="w-full uppercase text-2xl xxs:text-3xl sm:text-4xl font-black text-right leading-none dark:text-gray-800 text-white">
+          Result's Platform
+      </h1>
     </>
   )
 }

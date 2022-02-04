@@ -26,6 +26,7 @@ module.exports = {
         'banner-image-left': "url('/images/t1.jpeg')",
         'banner-image-right': "url('/images/t3.jpeg')",
         'banner-image-main': "url('/images/backgroundmain.jpg')",
+        'banner-image-eventweb': "url('/images/imagem_topo.jpg')",
       },
       fontSize: {
         'i-5': ['5rem','5rem'],
@@ -46,5 +47,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/aspect-ratio')],
 }

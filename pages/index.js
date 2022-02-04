@@ -1,5 +1,8 @@
 import TimeLeft from '@components/frontpage/timeLeft'
 import Title from '@components/frontpage/title'
+import PoweredBy from '@components/frontpage/poweredby'
+import Visit from '@components/frontpage/visit'
+
 
 /**
 <div className="absolute -z-10 top-0 brightness-50 min-h-screen w-full lg:w-1/2 bg-yellow-200 bg-center bg-cover bg-banner-image-left">
@@ -18,9 +21,8 @@ export default function Home() {
         <div className="absolute -z-10 top-0 min-h-screen w-full bg-fixed bg-center bg-cover bg-banner-image-main">
         </div>
 
-        <div className="w-full h-72 bg-yellow-200">
-          Hello2
-        </div>
+        <Visit />
+        <PoweredBy />
       </div>
   )
 }
