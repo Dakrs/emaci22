@@ -62,7 +62,7 @@ const Navbar = (props) => {
             </a>
           </Link>
         </div>
-        <div className={`flex items-center justify-center max-w-20 sm:max-w-28 w-full lg:max-w-none lg:h-28 ${flags['info'] ? 'bg-slate-800 text-white' : 'bg-white text-slate-800 dark:text-slate-400'} `}>
+        <div className={`flex items-center justify-center max-w-20 sm:max-w-28 w-full lg:max-w-none lg:h-28 bg-white text-slate-800 dark:text-slate-400 `}>
             <a href="https://www.emaci2022braga.com/pt" className={`hover:text-gray-800 hover:bg-gray-100 dark:hover:text-white dark:hover:bg-gray-600 w-full h-full flex flex-col rounded items-center justify-center  transition-colors duration-200  text-center cursor-pointer`}>
                 <AiOutlineGlobal className="h-10 w-10" />
                 <span className="text-md sm:text-lg font-normal">Website</span>

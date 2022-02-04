@@ -148,7 +148,7 @@ const FilterSortTable = ({dataI,headers,id}) => {
   )
 }
 
-const FilterSortTableWithPage = ({dataI,headers,id}) => {
+const FilterSortTableWithPage = ({dataI,headers,id,size}) => {
   const data = React.useMemo(
      () => dataI,
      [dataI]
@@ -198,7 +198,7 @@ const FilterSortTableWithPage = ({dataI,headers,id}) => {
      setPageSize,
      canPreviousPage,
      canNextPage,
-  } = useTable({ columns, data, filterTypes, initialState: { pageSize: 10 } },useGlobalFilter,useSortBy,usePagination)
+  } = useTable({ columns, data, filterTypes, initialState: { pageSize: size } },useGlobalFilter,useSortBy,usePagination)
 
   return (
     <>
@@ -273,6 +273,11 @@ const FilterSortTableWithPage = ({dataI,headers,id}) => {
       </div>
     </>
   )
+}
+
+
+FilterSortTableWithPage.defaultProps = {
+  size: 10
 }
 
 const GenericTable = ({data,headers,id,mapping}) => {

@@ -50,6 +50,43 @@ const startlist = (props) => {
     return res;
   }
 
+  if (data.prova.estafetas){
+    headers.push({ Header: `Ath. 1`, accessor: `res0`, disableSortBy: true })
+    headers.push({ Header: `Ath. 2`, accessor: `res1`, disableSortBy: true })
+    headers.push({ Header: `Ath. 3`, accessor: `res2`, disableSortBy: true })
+    headers.push({ Header: `Ath. 4`, accessor: `res3`, disableSortBy: true })
+  }
+
+  const get = (item) => {
+    if (!data.prova.estafetas)
+      return (data.prova.series[item])
+
+
+    const seriei = data.prova.series[item]
+
+    const newserie = []
+    seriei.map((atl,index) => {
+      const atlnew = {...atl}
+      var temp_res;
+      if (atl.estafetas && atl.estafetas !== "")
+        temp_res = atl.estafetas.split(',')
+      else
+        temp_res = []
+      for(var i = 0; i < 4; i++){
+        if (i < temp_res.length){
+          atlnew[`res${i}`] = temp_res[i]
+        }
+        else{
+          atlnew[`res${i}`] = ""
+        }
+      }
+
+      newserie.push(atlnew)
+    })
+
+    return newserie
+  }
+
   return (
     <div className="min-h-screen flex flex-col w-full bg-slate-100 px-4 py-6 sm:p-10 lg:p-16">
       <div className="w-full flex flex-col justify-center md:flex-row md:justify-between">
@@ -73,7 +110,7 @@ const startlist = (props) => {
                   <div key={`${id}-series-${item}`} className="w-full">
                     <h2 className={`w-full font-bebas-neue select-none uppercase text-2xl sm:text-3xl font-black text-center ${index % 2 === 0 ? 'sm:text-right' : 'sm:text-left'} leading-none dark:text-write text-slate-800`}>Heat {item}</h2>
                     <div className="py-8 ">
-                      <FilterSortTable dataI={data.prova.series[item]} headers={headers} id={`${id}-series-${index}`}/>
+                      <FilterSortTable dataI={get(item)} headers={headers} id={`${id}-series-${index}`}/>
                     </div>
                   </div>
                 )

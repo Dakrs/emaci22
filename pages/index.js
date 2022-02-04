@@ -15,7 +15,7 @@ export default function Home() {
           <Title />
           <TimeLeft />
         </div>
-        <div className="absolute -z-10 top-0 min-h-screen w-full bg-center bg-cover bg-banner-image-main">
+        <div className="absolute -z-10 top-0 min-h-screen w-full bg-fixed bg-center bg-cover bg-banner-image-main">
         </div>
 
         <div className="w-full h-72 bg-yellow-200">
