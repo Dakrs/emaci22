@@ -15,7 +15,6 @@ const Layout = ({children}) => {
         <link rel="preconnect" href="https://fonts.gstatic.com"/>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@700&display=swap" rel="stylesheet"/>
         <link rel="icon" href="/icons/emaci.png" />
-        <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
       </Head>
 
       <Navbar />
