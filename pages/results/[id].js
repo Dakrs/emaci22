@@ -4,11 +4,11 @@ import Flags from 'country-flag-icons/react/3x2';
 import {translate2to3} from '@utils/flags';
 import { HocFetcher } from '@components/common/hocFetcher';
 import Link from "next/link"
-import RunSeries from '@components/athletes/runSeries';
-import LaunchSeries from '@components/athletes/launchSeries';
-import VerticalJumpSeries from '@components/athletes/verticalJumpSeries';
-import HorizontalJumpSeries from '@components/athletes/horizontalJumpSeries';
-import CourierSeries from '@components/athletes/courierSeries';
+import RunSeries from '@components/athletes/RunSeries';
+import LaunchSeries from '@components/athletes/LaunchSeries';
+import VerticalJumpSeries from '@components/athletes/VerticalJumpSeries';
+import HorizontalJumpSeries from '@components/athletes/HorizontalJumpSeries';
+import CourierSeries from '@components/athletes/CourierSeries';
 import { useRouter } from 'next/router';
 
 
