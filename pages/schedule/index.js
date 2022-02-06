@@ -121,7 +121,7 @@ function CompressedColumn({event}) {
                 <div className={`text-gray-900 group flex rounded-md items-center w-full px-2 py-2 text-sm`}>
                   <AiOutlineInfoCircle className="w-5 h-5 mr-2"  />
                   {event.concluida === null ? (
-                    'NA'
+                    ' '
                   ) : (
                     <>
                       {event.concluida === false ? 'Running' : 'Finished'}
@@ -221,17 +221,27 @@ const TBRowFull = ({event}) => {
       </TBRow>
       <TBRowMobile>
         <td className={`px-5 py-5 border-b border-gray-200 bg-white text-sm`}>
-          <p className="text-gray-900 whitespace-no-wrap">
-              {event.nome}
-          </p>
+          <div className="flex flex-col items-center">
+            <p className="text-gray-900 whitespace-no-wrap text-center">
+                {event.nome}
+            </p>
+            <p className="text-gray-900 whitespace-no-wrap text-center">
+              {event.concluida === false && (
+                <ImSpinner className="animate-spin h-5 w-5"/>
+              )}
+              {event.concluida === true && (
+                <BsCheck2Circle className="h-5 w-5"/>
+              )}
+            </p>
+          </div>
+        </td>
+        <td className={`px-5 py-5 border-b border-gray-200 bg-white text-sm`}>
+          <CompressedColumn event={event} />
         </td>
         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
           <p className="text-gray-900 whitespace-no-wrap">
               {event.sexo}
           </p>
-        </td>
-        <td className={`px-5 py-5 border-b border-gray-200 bg-white text-sm`}>
-          <CompressedColumn event={event} />
         </td>
       </TBRowMobile>
     </>
@@ -473,16 +483,16 @@ const Schedule = (props) => {
                                      </span>
                                   </div>
                                 </th>
+                                <th scope="col" className="px-5 py-3  text-slate-800  text-left text-sm uppercase font-bold rounded-tr-xl">
+                                    Information
+                                </th>
                                 <th scope="col" className="px-5 py-3  text-slate-800 text-left text-sm uppercase font-bold rounded-tl-xl" onClick={() => update_sort(1)}>
                                   <div className="w-full flex flex-row items-center justify-between">
-                                     Sex
+                                     Gender
                                      <span>
                                       {sortIconState(sorting[1])}
                                      </span>
                                   </div>
-                                </th>
-                                <th scope="col" className="px-5 py-3  text-slate-800  text-left text-sm uppercase font-bold rounded-tr-xl">
-                                    Information
                                 </th>
                             </TBRowMobile>
                         </thead>
