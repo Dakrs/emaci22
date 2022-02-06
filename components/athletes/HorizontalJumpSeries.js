@@ -2,6 +2,8 @@ import { FilterSortTable } from '@components/common/table'
 import Flags from 'country-flag-icons/react/3x2';
 import {translate2to3} from '@utils/flags';
 import {useState} from 'react'
+import { medal } from '@components/athletes/medals'
+
 
 const HorizontalJumpSeries = ({data,id}) => {
 
@@ -15,7 +17,8 @@ const HorizontalJumpSeries = ({data,id}) => {
       var headers = [
         {
             Header: 'Pos',
-            accessor: 'posicao'
+            accessor: 'posicao',
+            Cell: medal
         },
         {
           Header: 'BIB',
@@ -68,7 +71,8 @@ const HorizontalJumpSeries = ({data,id}) => {
         atlethe.dorsal = item.dorsal;
         atlethe.clube = item.clube;
         atlethe.marca = item.obs_mar ? `${item.marca} (${item.obs_mar})` : item.marca;
-        atlethe.posicao = item.obs_pos ? item.obs_pos : item.posicao;
+        var pos_temp = item.obs_pos ? item.obs_pos : item.posicao;
+        atlethe.posicao = [pos_temp,item.medalha]
         atlethe.escalao = item.escalao
 
         var temp_res = item.resultados.split(',')

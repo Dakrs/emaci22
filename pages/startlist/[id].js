@@ -4,13 +4,15 @@ import {translate2to3} from '@utils/flags';
 import { HocFetcher } from '@components/common/hocFetcher';
 import Link from "next/link"
 import { GenericTable } from '@components/common/table';
-import { FilterSortTable } from '@components/common/table'
+import { FilterSortTable } from '@components/common/table';
+import { useRouter } from 'next/router';
 
 
 
-const startlist = (props) => {
+const Startlist = (props) => {
   //const { data,error } = useSWR(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/field/fieldData/${id}`,fetcher,{refreshInterval: 250})
   const { data,id } = props;
+  const router = useRouter();
 
   const headers = [
     {
@@ -89,16 +91,21 @@ const startlist = (props) => {
 
   return (
     <div className="min-h-screen flex flex-col w-full bg-slate-100 px-4 py-6 sm:p-10 lg:p-16">
-      <div className="w-full flex flex-col justify-center md:flex-row md:justify-between">
-        <div className="flex flex-col">
+      <div className="w-full flex flex-col justify-center sm:flex-row sm:justify-between">
+        <div className="flex flex-col justify-center">
           <h1 className="w-full font-bebas-neue select-none uppercase text-4xl sm:text-5xl font-black text-center sm:text-left leading-none dark:text-write text-slate-800">{data.prova.nome}</h1>
           <h2 className="w-full font-bebas-neue select-none uppercase text-2xl sm:text-3xl font-black text-center sm:text-left leading-none dark:text-write text-slate-800">Startlist</h2>
         </div>
 
-        <div className="flex items-center justify-center my-4">
-          <Link href={`/schedule?day=${data.prova.dia}`} passHref>
-            <a className="px-6 py-2 text-lg font-semibold text-center rounded text-white bg-slate-700 hover:bg-slate-600">Go Back</a>
-          </Link>
+        <div className="flex flex-col items-center justify-center my-4">
+          <button onClick={() => router.back()} className="w-32 px-6 py-2 text-lg font-semibold text-center rounded text-white bg-slate-700 hover:bg-slate-600 mb-1">Go Back</button>
+          {data.prova.resultados ? (
+            <Link href={`/results/${id}`} passHref>
+              <a className="w-32 md:w-full px-6 py-2 text-lg font-semibold text-center rounded text-white bg-green-300 hover:bg-green-400 mt-1">Results</a>
+            </Link>
+           ) :
+           (<button disabled={true} className="w-32 md:w-full px-6 py-2 text-lg font-semibold text-center rounded text-white bg-gray-200 mt-1">Results</button>)
+          }
         </div>
       </div>
 
@@ -122,7 +129,7 @@ const startlist = (props) => {
   )
 }
 
-export default HocFetcher(startlist,`${process.env.NEXT_PUBLIC_API_ENDPOINT}/webservice/api/event/startlists`)
+export default HocFetcher(Startlist,`${process.env.NEXT_PUBLIC_API_ENDPOINT}/webservice/api/event/startlists`)
 
 
 export async function getStaticPaths() {

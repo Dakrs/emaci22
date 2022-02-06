@@ -1,10 +1,10 @@
 import React, { Fragment, useEffect, useRef, useState } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/solid'
-import { AiOutlineClockCircle } from 'react-icons/ai';
+import { AiOutlineClockCircle, AiOutlineInfoCircle } from 'react-icons/ai';
 import { BsGenderAmbiguous } from 'react-icons/bs';
 import { CgTimelapse } from 'react-icons/cg';
-import { FaClipboardList } from 'react-icons/fa';
+import { FaClipboardList, FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 import { GiPodium } from 'react-icons/gi';
 import { HiOutlineDocumentReport } from 'react-icons/hi';
 import Link from "next/link";
@@ -116,6 +116,18 @@ function CompressedColumn({event}) {
                   </div>
                 )}
               </Menu.Item>
+              <Menu.Item>
+                <div className={`text-gray-900 group flex rounded-md items-center w-full px-2 py-2 text-sm`}>
+                  <AiOutlineInfoCircle className="w-5 h-5 mr-2"  />
+                  {event.concluida === null ? (
+                    'NA'
+                  ) : (
+                    <>
+                      {event.concluida === false ? 'Active' : 'Finished'}
+                    </>
+                  )}
+                </div>
+              </Menu.Item>
             </div>
           </Menu.Items>
         </Transition>
@@ -190,6 +202,11 @@ const TBRowFull = ({event}) => {
             )
           }
         </td>
+        <td className={`px-5 py-5 border-b border-gray-200 bg-white text-sm`}>
+          {event.concluida === null && ('NA')}
+          {event.concluida === false && ('Active')}
+          {event.concluida === true && ('Finished')}
+        </td>
       </TBRow>
       <TBRowMobile>
         <td className={`px-5 py-5 border-b border-gray-200 bg-white text-sm`}>
@@ -209,39 +226,6 @@ const TBRowFull = ({event}) => {
     </>
   )
 }
-
-const examples = [
-  {
-    id: 123123123,
-    hora: '16:30',
-    sex: 'Male',
-    round: 'Qualification',
-    nome: 'Long Jump',
-    startlist: true,
-    results: true,
-    inscriptions: true
-  },
-  {
-    id: 12312312323,
-    hora: '16:30',
-    sex: 'Male',
-    round: 'Qualification',
-    nome: 'Long Jump',
-    startlist: true,
-    results: true,
-    inscriptions: true
-  },
-  {
-    id: 12312312331,
-    hora: '16:30',
-    sex: 'Male',
-    round: 'Qualification',
-    nome: 'Long Jump',
-    startlist: false,
-    results: false,
-    inscriptions: true
-  },
-]
 
 function validate_day(day){
 
@@ -402,12 +386,16 @@ const Schedule = (props) => {
       <div className="min-h-screen flex flex-col items-center w-full bg-slate-100 p-10 lg:p-16">
         <div className="flex w-full items-end justify-center md:justify-between">
           <div className="flex flex-row">
-            <h1 onClick={prev} className="font-bebas-neue select-none uppercase text-i-5 sm:text-i-6 font-black text-left leading-none dark:text-write text-slate-800 mr-2 hover:text-slate-700 cursor-pointer" >{'\<'}</h1>
+            <div className="flex items-center dark:text-write text-slate-800 mr-2 hover:text-slate-700 cursor-pointer">
+              <FaArrowLeft onClick={prev} className="h-12 w-12 sm:h-16 sm:w-16" />
+            </div>
             <div className="flex flex-col">
               <h1 className="w-full font-bebas-neue select-none uppercase text-4xl sm:text-5xl font-black text-left leading-none dark:text-write text-slate-800">{days[index].name}</h1>
               <h1 className="w-full font-bebas-neue select-none uppercase text-4xl sm:text-5xl font-black text-left leading-none dark:text-write text-slate-800">{days[index].date}</h1>
             </div>
-            <h1 onClick={next} className="font-bebas-neue select-none uppercase text-i-5 sm:text-i-6 font-black text-left leading-none dark:text-write text-slate-800 ml-2 hover:text-slate-700 cursor-pointer" >{'\>'}</h1>
+            <div className="flex items-center dark:text-write text-slate-800 mr-2 hover:text-slate-700 cursor-pointer">
+              <FaArrowRight onClick={next} className="h-12 w-12 sm:h-16 sm:w-16" />
+            </div>
           </div>
           <div className="hidden md:flex">
             <h1 className="font-bebas-neue select-none uppercase text-4xl sm:text-5xl font-black text-left leading-none dark:text-write text-slate-800">Competitions</h1>
@@ -423,7 +411,7 @@ const Schedule = (props) => {
                               <th scope="col" className="px-5 py-3  text-slate-800  text-center text-sm md:text-lg uppercase font-bold">
                                 Search:
                               </th>
-                              <th colSpan={6} scope="col" className="px-5 py-3 bg-white text-slate-800  text-left text-sm uppercase font-bold">
+                              <th colSpan={7} scope="col" className="px-5 py-3 bg-white text-slate-800  text-left text-sm uppercase font-bold">
                                 <input value={search} onChange={(e) => (setSearch(e.target.value))} className="w-full bg-white rounded border border-gray-300 focus:border-slate-500 focus:ring-2 focus:ring-slate-200 text-base outline-none text-gray-700 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
                               </th>
                             </tr>
@@ -461,6 +449,9 @@ const Schedule = (props) => {
                                 </th>
                                 <th scope="col" className="px-5 py-3  text-slate-800  text-left text-sm uppercase font-bold">
                                 </th>
+                                <th scope="col" className="px-5 py-3  text-slate-800  text-left text-sm uppercase font-bold">
+                                    State
+                                </th>
                             </TBRow>
                             <TBRowMobile className="table-row lg:hidden">
                                 <th scope="col" className="px-5 py-3  text-slate-800 text-left text-sm uppercase font-bold rounded-tl-xl" onClick={() => update_sort(2)}>
@@ -487,7 +478,7 @@ const Schedule = (props) => {
                         <tbody>
                           {sort(get(data)).map((item,i) => {
                             const upper = item.nome.toUpperCase();
-                            if (search !== '' && !upper.startsWith(search.toUpperCase())) {
+                            if (search !== '' && !upper.includes(search.toUpperCase())) {
                               return (null)
                             }
                             return (
