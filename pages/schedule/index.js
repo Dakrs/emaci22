@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useRef, useState } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import { AiOutlineClockCircle, AiOutlineInfoCircle } from 'react-icons/ai';
-import { BsGenderAmbiguous } from 'react-icons/bs';
+import { BsGenderAmbiguous, BsCheck2Circle } from 'react-icons/bs';
 import { CgTimelapse } from 'react-icons/cg';
 import { FaClipboardList, FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 import { GiPodium } from 'react-icons/gi';
@@ -12,6 +12,7 @@ import { TBRow, TBRowMobile } from '@components/common/table';
 import { HocFetcherWithoutId } from '@components/common/hocFetcher';
 import { useRouter } from 'next/router'
 import { TiArrowSortedDown, TiArrowSortedUp, TiArrowUnsorted } from 'react-icons/ti';
+import { ImSpinner } from 'react-icons/im';
 
 
 
@@ -123,7 +124,7 @@ function CompressedColumn({event}) {
                     'NA'
                   ) : (
                     <>
-                      {event.concluida === false ? 'Active' : 'Finished'}
+                      {event.concluida === false ? 'Running' : 'Finished'}
                     </>
                   )}
                 </div>
@@ -203,9 +204,19 @@ const TBRowFull = ({event}) => {
           }
         </td>
         <td className={`px-5 py-5 border-b border-gray-200 bg-white text-sm`}>
-          {event.concluida === null && ('NA')}
-          {event.concluida === false && ('Active')}
-          {event.concluida === true && ('Finished')}
+          {event.concluida === null && (' ')}
+          {event.concluida === false && (
+            <div className="flex flex-row">
+              <ImSpinner className="animate-spin h-5 w-5"/>
+              <p className="ml-1">Running</p>
+            </div>
+          )}
+          {event.concluida === true && (
+            <div className="flex flex-row">
+              <BsCheck2Circle className="h-5 w-5"/>
+              <p className="ml-1">Finished</p>
+            </div>
+          )}
         </td>
       </TBRow>
       <TBRowMobile>
