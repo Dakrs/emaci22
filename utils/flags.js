@@ -3,7 +3,7 @@ const translate2to3 = (code) => {
     'ALB': 'AL',
     'ARM': 'AM',
     'AND': 'AD',
-    'AUS': 'AT',
+    'AUT': 'AT',
     'AZE': 'AZ',
     'BLR': 'BY',
     'BEL': 'BE',

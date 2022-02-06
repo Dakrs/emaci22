@@ -44,30 +44,18 @@ const ResultsMulti = (props) => {
     {
       Header: 'Points',
       accessor: 'pontos',
-    },
-    {
-      Header: '100M',
-      accessor: 'res0',
-    },
-    {
-      Header: '150M',
-      accessor: 'res1',
-    },
-    {
-      Header: '200M',
-      accessor: 'res2',
-    },
-    {
-      Header: '250M',
-      accessor: 'res3',
-    },
-    {
-      Header: '300M',
-      accessor: 'res4',
-    },
+    }
   ]
 
   const processed_data = []
+
+  data.prova.header.forEach((item, i) => {
+    headers.push({
+      Header: item,
+      accessor: `res${i}`
+    })
+  });
+
 
   data.prova.resultados.forEach((item, i) => {
     const entry = {...item}

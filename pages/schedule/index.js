@@ -262,7 +262,7 @@ const Schedule = (props) => {
   }
 
   const get = () => {
-    const key = index.toString();
+    const key = (index + 1).toString();
 
     if (key in data)
       return (data[key])
