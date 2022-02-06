@@ -40,15 +40,11 @@ const Footer = (props) => {
             </div>
             <div className="mt-4 md:mt-0 flex flex-col md:flex-row">
                 <nav className="flex-1 flex flex-col items-center justify-center md:items-end md:border-r border-gray-100 md:pr-5">
-                    <a aria-current="page" href="#" className="dark:hover:text-gray-700 hover:text-white">
-                        Components
+                    <a aria-current="page" href="https://www.forumbraga.com/" className="dark:hover:text-gray-700 hover:text-white">
+                        Altice Forum Braga
                     </a>
-                    <a aria-current="page" href="#" className="dark:hover:text-gray-700 hover:text-white">
-                        Contacts
-                    </a>
-                    <a aria-current="page" href="#" className="dark:hover:text-gray-700 hover:text-white">
-                        Customization
-                    </a>
+                    <p>R. Monsenhor Airosa, 4705-002</p>
+                    <p>20 - 27 February 2022</p>
                 </nav>
                 <div className="md:hidden mt-4 mx-auto w-11 h-px rounded-full">
                 </div>
@@ -63,10 +59,10 @@ const Footer = (props) => {
                 </div>
                 <div className="mt-7 md:mt-0 flex-1 flex flex-col items-center justify-center md:items-start md:pl-5">
                     <span className="">
-                        © 2022
+                      EMACI BRAGA  © 2022
                     </span>
                     <span className="mt-7 md:mt-1">
-                        Created by
+                        Developed by
                     </span>
                     <a className="underline hover:text-primary-gray-20" href="#">
                         Mega e Ambrósio
