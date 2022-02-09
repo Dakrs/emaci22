@@ -258,13 +258,22 @@ function validate_day(day){
 const Schedule = (props) => {
   const { data } = props;
   const router = useRouter()
-  const { day } = router.query
+  const { day,searchq } = router.query
 
-  var st_index = validate_day(day) ? parseInt(day) : 0;
+  //var st_index = validate_day(day) ? parseInt(day) : 0;
 
-  const [index,setIndex] = useState(st_index);
+  const [index,setIndex] = useState(0);
   const [search,setSearch] = useState('');
   const [sorting,setSorting] = useState([0,0,0])
+
+  useEffect(() => {
+    if (validate_day(day)){
+      setIndex(parseInt(day))
+    }
+    if (searchq){
+      setSearch(searchq)
+    }
+  },[day,searchq])
 
   const next = () => {
     let i = index + 1;

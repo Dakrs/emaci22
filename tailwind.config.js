@@ -45,6 +45,11 @@ module.exports = {
       fontFamily: {
         'title': '"Montserrat Alternates",sans-serif'
       },
+      minWidth: {
+        '40': '10rem',
+        '44': '11rem',
+        '48': '12rem'
+      },
     },
   },
   plugins: [require('@tailwindcss/aspect-ratio')],
