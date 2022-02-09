@@ -13,7 +13,8 @@ const Navbar = (props) => {
   const flags = {
     'schedule': false,
     'results': false,
-    'info': false
+    'info': false,
+    'mapping': false
   }
 
   const active = router.pathname.split('\/')[1]
@@ -46,6 +47,14 @@ const Navbar = (props) => {
             </a>
           </Link>
         </div>
+        <div className={`flex items-center justify-center max-w-20 sm:max-w-28 w-full lg:max-w-none lg:h-28 ${flags['mapping'] ? 'bg-slate-800 text-white' : 'bg-white text-slate-800 dark:text-slate-400'} `}>
+          <Link href="/mapping">
+            <a className={`${flags['mapping'] ? '' : 'hover:text-gray-800 hover:bg-gray-100 dark:hover:text-white dark:hover:bg-gray-600'} w-full h-full flex flex-col rounded items-center justify-center  transition-colors duration-200  text-center cursor-pointer`}>
+                <BsMap className="h-10 w-10" />
+                <span className="text-md sm:text-lg font-normal">Map</span>
+            </a>
+          </Link>
+        </div>
         <div className={`flex items-center justify-center max-w-20 sm:max-w-28 w-full lg:max-w-none lg:h-28 ${flags['results'] ? 'bg-slate-800 text-white' : 'bg-white text-slate-800 dark:text-slate-400'} `}>
           <Link href="/results">
             <a className={`${flags['results'] ? '' : 'hover:text-gray-800 hover:bg-gray-100 dark:hover:text-white dark:hover:bg-gray-600'} w-full h-full flex flex-col rounded items-center justify-center  transition-colors duration-200  text-center cursor-pointer`}>
@@ -59,14 +68,6 @@ const Navbar = (props) => {
             <a className={`${flags['info'] ? '' : 'hover:text-gray-800 hover:bg-gray-100 dark:hover:text-white dark:hover:bg-gray-600'} w-full h-full flex flex-col rounded items-center justify-center  transition-colors duration-200  text-center cursor-pointer`}>
                 <AiOutlineInfoCircle className="h-10 w-10" />
                 <span className="text-md sm:text-lg font-normal">Information</span>
-            </a>
-          </Link>
-        </div>
-        <div className={`flex items-center justify-center max-w-20 sm:max-w-28 w-full lg:max-w-none lg:h-28 ${flags['mapping'] ? 'bg-slate-800 text-white' : 'bg-white text-slate-800 dark:text-slate-400'} `}>
-          <Link href="/mapping">
-            <a className={`${flags['mapping'] ? '' : 'hover:text-gray-800 hover:bg-gray-100 dark:hover:text-white dark:hover:bg-gray-600'} w-full h-full flex flex-col rounded items-center justify-center  transition-colors duration-200  text-center cursor-pointer`}>
-                <BsMap className="h-10 w-10" />
-                <span className="text-md sm:text-lg font-normal">Map</span>
             </a>
           </Link>
         </div>
