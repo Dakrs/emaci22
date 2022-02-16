@@ -36,7 +36,7 @@ const translate2to3 = (code) => {
     'MKD': 'MK',
     'NOR': 'NO',
     'POL': 'PL',
-    'PRT': 'PT',
+    'POR': 'PT',
     'ROU': 'RO',
     'RUS': 'RU',
     'SMR': 'SM',

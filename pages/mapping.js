@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import TemplateSection from '@components/common/templateSection'
+import { TemplateSection } from '@components/common/templateSection'
 import { GenericTab } from '@components/common/tab'
 import { GenericDisclose } from '@components/common/disclose'
 import Link from "next/link"
@@ -60,7 +60,7 @@ const Mapping = (props) => {
 
 
   return (
-    <TemplateSection title="Mapping" center={true}>
+    <TemplateSection title="Mapping" subtitle="Search for a competition using a category" center={true}>
       <GenericDisclose data={data.map} id="tap-mapping" render={post} />
     </TemplateSection>
   )

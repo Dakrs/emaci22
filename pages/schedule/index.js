@@ -413,7 +413,7 @@ const Schedule = (props) => {
   }
 
   return (
-      <div className="min-h-screen flex flex-col items-center w-full bg-slate-100 p-10 lg:p-16">
+      <div className="min-h-screen flex flex-col items-center w-full bg-slate-100 px-4 py-6 sm:p-10 lg:p-16">
         <div className="flex w-full items-end justify-center md:justify-between">
           <div className="flex flex-row">
             <div className="flex items-center dark:text-write text-slate-800 mr-2 hover:text-slate-700 cursor-pointer">

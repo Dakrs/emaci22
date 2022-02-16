@@ -3,7 +3,7 @@ import { ChevronUpIcon } from '@heroicons/react/solid'
 
 const GenericDisclose = ({data,id,render}) => {
   return (
-    <div className="w-full px-4">
+    <div className="w-full">
       <div className="w-full max-w-3xl p-2 mx-auto bg-white rounded-2xl">
           {data.map((category,idx) => (
             <Disclosure key={`${id}-${category.prova}`} as="div" className={idx === 0 ? '' : 'mt-2'}>

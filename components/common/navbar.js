@@ -67,7 +67,7 @@ const Navbar = (props) => {
           <Link href="/info">
             <a className={`${flags['info'] ? '' : 'hover:text-gray-800 hover:bg-gray-100 dark:hover:text-white dark:hover:bg-gray-600'} w-full h-full flex flex-col rounded items-center justify-center  transition-colors duration-200  text-center cursor-pointer`}>
                 <AiOutlineInfoCircle className="h-10 w-10" />
-                <span className="text-md sm:text-lg font-normal">Information</span>
+                <span className="text-md sm:text-lg font-normal">Info</span>
             </a>
           </Link>
         </div>
