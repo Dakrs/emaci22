@@ -7,7 +7,7 @@ import Head from 'next/head'
 
 const Layout = ({children}) => {
   return (
-    <div className="relative w-screen">
+    <div className="relative w-screen no-scrollbar">
       <Head>
         <title>EMACI 2022</title>
         <meta name="description" content="European Master Athletics Championships Indoor" />

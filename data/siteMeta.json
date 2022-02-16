@@ -26,5 +26,20 @@
       "link": "https://www.cm-braga.pt/",
       "alt": "This is alt text"
     }
-  ]
+  ],
+  "info": {
+    "sidebanner": {
+      "title": "A few words about EMACI 2022",
+      "text": "The Council of the European Masters Association (EMA) has decided to assign Braga the organization of the thirteenth European Veterans Indoor Championships (EMACI), a competition aimed at athletes over 35 years of age, separated by age groups every five years and will take place, from February 20th to 27th, 2022, on the six-lane track of the new Altice Forum, located in the center of the city.",
+      "website": "https://www.emaci2022braga.com/en",
+      "duration": "20 - 27 February 2022"
+    },
+    "map": {
+      "email": "emaci.2020.info@gmail.com",
+      "phone": "+351 924 489 968",
+      "place": "Altice Forum Braga",
+      "location": "R. Monsenhor Airosa, 4705-002 Braga, Portugal",
+      "googmapsstr": ""
+    }
+  }
 }
