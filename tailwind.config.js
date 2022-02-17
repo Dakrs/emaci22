@@ -21,6 +21,9 @@ module.exports = {
         '7/10': '70%',
         '8/10': '80%',
         '9/10': '90%',
+        'vw-90': '90vw',
+        'vw-10': '10vw',
+        'custom': '31%'
       },
       backgroundImage: {
         'banner-image-left': "url('/images/t1.jpeg')",
@@ -49,6 +52,9 @@ module.exports = {
         '40': '10rem',
         '44': '11rem',
         '48': '12rem'
+      },
+      colors: {
+        table: '#F9FAFB',
       },
     },
   },

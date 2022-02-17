@@ -19,7 +19,7 @@ const Layout = ({children}) => {
 
       <Navbar />
 
-      <main className="absolute top-20 sm:top-24 w-full lg:top-0 lg:left-1/10 min-h-screen lg:w-9/10">
+      <main className="absolute top-20 sm:top-24 w-full lg:top-0 lg:left-1/10 min-h-screen lg:w-vw-90">
         {children}
         <Footer />
       </main>

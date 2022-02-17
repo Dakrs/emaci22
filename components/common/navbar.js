@@ -23,7 +23,7 @@ const Navbar = (props) => {
     flags[active] = true
 
   return (
-    <div className="w-full z-50 lg:w-1/10 lg:h-screen lg:max-h-screen fixed top-0 bg-white">
+    <div className="w-full z-50 lg:w-vw-10 lg:h-screen lg:max-h-screen fixed top-0 bg-white">
       <nav className="w-full flex flex-row lg:h-screen lg:flex-col justify-center bg-white">
         <div className="flex items-center justify-center w-20 sm:w-28 lg:w-full lg:h-28 bg-white">
           <Link href="/" passHref>
