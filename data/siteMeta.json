@@ -25,6 +25,27 @@
       "aspect": "aspect-w-1 aspect-h-1",
       "link": "https://www.cm-braga.pt/",
       "alt": "This is alt text"
+    },
+    {
+      "name": "European Masters Athletics",
+      "src": "/images/powered/ema_cmyk.jpg",
+      "aspect": "aspect-w-1 aspect-h-1",
+      "link": "https://european-masters-athletics.org",
+      "alt": "This is alt text"
+    },
+    {
+      "name": "Instituto Português do Desporto e Juventude",
+      "src": "/images/powered/IPDJCORES.png",
+      "aspect": "aspect-w-1 aspect-h-1",
+      "link": "https://ipdj.gov.pt",
+      "alt": "This is alt text"
+    },
+    {
+      "name": "Associação Nacional Atletismo Veterano",
+      "src": "/images/powered/Logo-ANAV.jpeg",
+      "aspect": "aspect-w-1 aspect-h-1",
+      "link": "https://anavportugal.pt",
+      "alt": "This is alt text"
     }
   ],
   "info": {

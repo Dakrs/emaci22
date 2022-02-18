@@ -64,8 +64,11 @@ const Footer = (props) => {
                     <span className="mt-7 md:mt-1">
                         Developed by
                     </span>
-                    <a className="underline hover:text-primary-gray-20" href="#">
-                        Mega e Ambrósio
+                    <a className="underline hover:text-primary-gray-20" href="mailto: alexrone.rone3@gmail.com">
+                      Alexandre Pacheco
+                    </a>
+                    <a className="underline hover:text-primary-gray-20" href="https://diogosobral.vercel.app">
+                      Diogo Sobral
                     </a>
                 </div>
             </div>

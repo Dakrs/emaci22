@@ -13,8 +13,8 @@ const Firstplace = ({country}) => {
   var Flag = Flags[translate2to3(country.country)];
 
   return (
-    <div className="p-1 w-4/5 sm:w-custom sm:-mt-6 bg-gradient-to-r from-orange-500 to-yellow-300 shadow-md rounded-2xl mb-10">
-      <article className="w-full py-16 text-slate-800 z-10 bg-white rounded-xl text-center">
+    <div className="p-1 order-1 sm:order-2 w-4/5 sm:w-custom sm:-mt-6 bg-gradient-to-r from-orange-500 to-yellow-300 shadow-md rounded-2xl mb-10">
+      <article className="w-full py-16 text-slate-800 z-10 bg-gray-50 rounded-xl text-center">
         <div className="flex w-full items-center justify-center">
           <Flag className="h-22 w-24" />
         </div>
@@ -54,8 +54,8 @@ const Secondplace = ({country}) => {
   var Flag = Flags[translate2to3(country.country)];
 
   return (
-    <div className="p-1 sm:pr-0 w-4/5 sm:w-custom bg-gradient-to-r from-gray-100 to-gray-300 shadow-md rounded-2xl sm:rounded-r-none sm:rounded-l-2xl mb-10">
-      <article className="w-full sm:px-4 py-10 text-center rounded-xl sm:rounded-r-none sm:rounded-l-xl bg-white">
+    <div className="p-1 order-2 sm:order-1 sm:pr-0 w-4/5 sm:w-custom bg-gradient-to-r from-gray-100 to-gray-300 shadow-md rounded-2xl sm:rounded-r-none sm:rounded-l-2xl mb-10">
+      <article className="w-full sm:px-4 py-10 text-center rounded-xl sm:rounded-r-none sm:rounded-l-xl bg-gray-50">
         <div className="flex w-full items-center justify-center">
           <Flag className="h-22 w-24" />
         </div>
@@ -95,8 +95,8 @@ const Thirdplace = ({country}) => {
   var Flag = Flags[translate2to3(country.country)];
 
   return (
-    <div className="p-1 sm:pl-0 w-4/5 sm:w-custom bg-gradient-to-r from-red-800 to-amber-800 shadow-md rounded-2xl sm:rounded-l-none sm:rounded-r-2xl mb-10">
-      <article className="w-full sm:px-4 py-10 text-center rounded-xl sm:rounded-l-none sm:rounded-r-xl bg-white">
+    <div className="p-1 order-3 sm:pl-0 w-4/5 sm:w-custom bg-gradient-to-r from-red-800 to-amber-800 shadow-md rounded-2xl sm:rounded-l-none sm:rounded-r-2xl mb-10">
+      <article className="w-full sm:px-4 py-10 text-center rounded-xl sm:rounded-l-none sm:rounded-r-xl bg-gray-50">
         <div className="flex w-full items-center justify-center">
           <Flag className="h-22 w-24" />
         </div>
@@ -134,13 +134,13 @@ const Thirdplace = ({country}) => {
 
 const Loadingwinner = (props) => (
   <>
-    <div className="p-1 lg:pr-0 w-4/5 lg:w-custom bg-gradient-to-r from-gray-100 to-gray-300 shadow-md rounded-2xl lg:rounded-r-none lg:rounded-l-2xl mb-10">
+    <div className="p-1 order-2 sm:order-1 lg:pr-0 w-4/5 lg:w-custom bg-gradient-to-r from-gray-100 to-gray-300 shadow-md rounded-2xl lg:rounded-r-none lg:rounded-l-2xl mb-10">
       <VerticalCardSkeleton rounded="rounded-2xl lg:rounded-r-none lg:rounded-l-2xl" />
     </div>
-    <div className="p-1 w-4/5 lg:w-custom lg:-mt-6 bg-gradient-to-r from-orange-500 to-yellow-300 shadow-md rounded-2xl mb-10">
+    <div className="p-1 order-1 sm:order-2 w-4/5 lg:w-custom lg:-mt-6 bg-gradient-to-r from-orange-500 to-yellow-300 shadow-md rounded-2xl mb-10">
       <VerticalCardSkeleton size="big" />
     </div>
-    <div className="p-1 lg:pl-0 w-4/5 lg:w-custom bg-gradient-to-r from-red-800 to-amber-800 shadow-md rounded-2xl lg:rounded-l-none lg:rounded-r-2xl mb-10">
+    <div className="p-1 order-3 lg:pl-0 w-4/5 lg:w-custom bg-gradient-to-r from-red-800 to-amber-800 shadow-md rounded-2xl lg:rounded-l-none lg:rounded-r-2xl mb-10">
       <VerticalCardSkeleton  rounded="rounded-2xl lg:rounded-l-none lg:rounded-r-2xl"/>
     </div>
   </>
@@ -197,11 +197,11 @@ const Ranking = (props) => {
             <Thirdplace country={data.medals[2]} />
           </>
         )}
-        <div className="flex flex-col items-center justify-center w-full lg:w-1/3">
+        <div className="flex order-4 flex-col items-center justify-center w-full lg:w-1/3 mt-4">
           <h1 className="w-full font-bebas-neue select-none uppercase text-4xl sm:text-5xl font-black text-center leading-none dark:text-write text-slate-800">Complete</h1>
           <h1 className="w-full font-bebas-neue select-none uppercase text-4xl sm:text-5xl font-black text-center leading-none dark:text-write text-slate-800">List</h1>
         </div>
-        <div className="w-full lg:w-2/3 px-4">
+        <div className="w-full order-5 lg:w-2/3 px-4 mt-4">
           <div className="container mx-auto">
             {loading ? (<TableSkeleton />) : (
               <FilterSortTableWithPage dataI={data.medals} headers={headers} id={`ex-medals-`} size={7}/>
