@@ -4,6 +4,9 @@ import {translate2to3} from '@utils/flags';
 import {useState} from 'react'
 import Modal from '@components/common/modal'
 import Image from 'next/image'
+import { RiMedalLine } from 'react-icons/ri';
+import { medal } from '@components/athletes/medals'
+
 
 const CourierSeries = ({data,id}) => {
   const states = Array(data.prova.count).fill(false);
@@ -34,7 +37,8 @@ const CourierSeries = ({data,id}) => {
         atlethe.dorsal = item.dorsal;
         atlethe.clube = item.clube;
         atlethe.marca = item.obs_mar ? `${item.marca} (${item.obs_mar})` : item.marca;
-        atlethe.posicao = item.obs_pos ? item.obs_pos : item.posicao;
+        var pos_temp = item.obs_pos ? item.obs_pos : item.posicao;
+        atlethe.posicao = [pos_temp,item.medalha]
         atlethe.escalao = item.escalao
 
         var temp_res;
@@ -58,7 +62,8 @@ const CourierSeries = ({data,id}) => {
       var headers = [
         {
             Header: 'Pos',
-            accessor: 'posicao'
+            accessor: 'posicao',
+            Cell: medal
         },
         {
           Header: 'BIB',

@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useSpring, animated } from 'react-spring'
+
 
 const calculateTimeLeft = () => {
   const difference = +new Date(`02/20/2022`) - +new Date();
@@ -40,9 +42,15 @@ const TimeLeft = (props) => {
     return () => clearTimeout(timer);
   });
 
+  const propsh2 = useSpring({
+    to: { opacity: 1 },
+    from: { opacity: 0 },
+    delay: 1000,
+  })
+
   return (
     <div className="w-full md:w-auto mt-12 px-5">
-       <div className="flex justify-center text-white text-center">
+       <animated.div style={propsh2} className="flex justify-center text-white text-center">
            {Object.keys(timeLeft).map((interval) => {
              return (
                <div key={`time-left-${interval}`} className="w-20 md:w-24 bg-light-100 py-3 md:py-4 mx-2">
@@ -57,7 +65,7 @@ const TimeLeft = (props) => {
                </div>
              )
            })}
-       </div>
+       </animated.div>
     </div>
   )
 }

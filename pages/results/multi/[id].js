@@ -3,14 +3,11 @@ import { FilterSortTable } from '@components/common/table'
 import Flags from 'country-flag-icons/react/3x2';
 import {translate2to3} from '@utils/flags';
 import { HocFetcher } from '@components/common/hocFetcher';
-import Link from "next/link"
+import Link from "next/link";
+import { medal } from '@components/athletes/medals';
+import { TitleSection } from '@components/common/templateSection';
 
-
-
-
-
-
-const results = (props) => {
+const ResultsMulti = (props) => {
 
   const {data,id} = props;
 
@@ -19,7 +16,8 @@ const results = (props) => {
   const headers = [
     {
         Header: 'Pos',
-        accessor: 'posicao'
+        accessor: 'posicao',
+        Cell: medal
     },
     {
       Header: 'BIB',
@@ -45,30 +43,18 @@ const results = (props) => {
     {
       Header: 'Points',
       accessor: 'pontos',
-    },
-    {
-      Header: '100M',
-      accessor: 'res0',
-    },
-    {
-      Header: '150M',
-      accessor: 'res1',
-    },
-    {
-      Header: '200M',
-      accessor: 'res2',
-    },
-    {
-      Header: '250M',
-      accessor: 'res3',
-    },
-    {
-      Header: '300M',
-      accessor: 'res4',
-    },
+    }
   ]
 
   const processed_data = []
+
+  data.prova.header.forEach((item, i) => {
+    headers.push({
+      Header: item,
+      accessor: `res${i}`
+    })
+  });
+
 
   data.prova.resultados.forEach((item, i) => {
     const entry = {...item}
@@ -81,6 +67,7 @@ const results = (props) => {
         entry[`res${i}`] = ""
       }
     }
+    entry.posicao = [item.posicao, 'medalha' in item ? item.medalha : null ]
 
     processed_data.push(entry)
   });
@@ -89,19 +76,7 @@ const results = (props) => {
 
   return (
     <div className="min-h-screen flex flex-col w-full bg-slate-100 px-4 py-6 sm:p-10 lg:p-16">
-      <div className="w-full flex flex-col justify-center md:flex-row md:justify-between">
-        <div className="flex flex-col">
-          <h1 className="w-full font-bebas-neue select-none uppercase text-4xl sm:text-5xl font-black text-center sm:text-left leading-none dark:text-write text-slate-800">{data.prova.nome}</h1>
-          <h2 className="w-full font-bebas-neue select-none uppercase text-2xl sm:text-3xl font-black text-center sm:text-left leading-none dark:text-write text-slate-800">Results</h2>
-        </div>
-
-        <div className="flex items-center justify-center my-4">
-          <Link href="/results" passHref>
-            <a className="px-6 py-2 text-lg font-semibold text-center rounded text-white bg-slate-700 hover:bg-slate-600">Go Back</a>
-          </Link>
-        </div>
-      </div>
-
+      <TitleSection title={data.prova.nome} subtitle="Results" />
       <div className="w-full py-4">
           <div className="container mx-auto">
             <FilterSortTable dataI={processed_data} headers={headers} id={`comb-results-${id}`}/>
@@ -111,7 +86,7 @@ const results = (props) => {
   )
 }
 
-export default HocFetcher(results,`${process.env.NEXT_PUBLIC_API_ENDPOINT}/webservice/api/event/comb`)
+export default HocFetcher(ResultsMulti,`${process.env.NEXT_PUBLIC_API_ENDPOINT}/webservice/api/event/comb`)
 
 export async function getStaticPaths() {
   // Get the paths we want to pre-render based on posts

@@ -1,7 +1,9 @@
+import React, {useEffect,useRef} from 'react'
 import TimeLeft from '@components/frontpage/timeLeft'
 import Title from '@components/frontpage/title'
 import PoweredBy from '@components/frontpage/poweredby'
 import Visit from '@components/frontpage/visit'
+import Ranking from '@components/frontpage/ranking'
 
 
 /**
@@ -21,6 +23,7 @@ export default function Home() {
         <div className="absolute -z-10 top-0 min-h-screen w-full bg-fixed bg-center bg-cover bg-banner-image-main">
         </div>
 
+        <Ranking />
         <Visit />
         <PoweredBy />
       </div>
