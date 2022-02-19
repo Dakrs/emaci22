@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Link from "next/link"
 const Index = ({show,change}) => {
     return (
         <div>
@@ -42,4 +43,39 @@ const Index = ({show,change}) => {
         </div>
     );
 };
+
+const AlertInfo = ({text,href}) => {
+  const [show,close] = useState(true)
+  //<Link href={href} passHref>
+  if (!show)
+    return null
+
+  return (
+    <div className="fixed z-50 left-vw-5 top-vh-85 w-vw-90 lg:left-vw-15 lg:w-vw-80">
+      <div className="w-full text-white bg-sky-400 rounded-lg mb-4">
+          <div className="container flex items-center justify-between px-6 py-4 mx-auto">
+              <div className="flex items-center">
+                  <svg viewBox="0 0 40 40" className="w-10 h-10 lg:w-6 lg:h-6 fill-current">
+                      <path d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM21.6667 28.3333H18.3334V25H21.6667V28.3333ZM21.6667 21.6666H18.3334V11.6666H21.6667V21.6666Z"></path>
+                  </svg>
+
+                  <p className="ml-3 mr-1">{text}</p>
+                  <Link href={href} passHref>
+                    <a className="font-bold">Click Here.</a>
+                  </Link>
+              </div>
+
+              <button onClick={() => close(false)} className="p-1 transition-colors duration-200 transform rounded-md hover:bg-opacity-25 hover:bg-gray-600 focus:outline-none">
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 18L18 6M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+            </button>
+          </div>
+      </div>
+    </div>
+  )
+}
+
+export { AlertInfo };
+
 export default Index;

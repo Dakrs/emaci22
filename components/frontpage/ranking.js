@@ -187,7 +187,7 @@ const Ranking = (props) => {
   ]
 
   return (
-    <div className="w-full px-4 py-6 sm:p-10 sm:p-16 bg-slate-50">
+    <div id="rankings" className="w-full px-4 py-6 sm:p-10 sm:p-16 bg-slate-50">
       <h1 className="w-full font-bebas-neue select-none uppercase text-4xl sm:text-5xl font-black text-center leading-none dark:text-write text-slate-800">Rankings</h1>
       <div className="flex flex-wrap w-full justify-center items-center py-10 mt-6">
         {loading || data.medals.length < 3 ? (<Loadingwinner />) : (
@@ -203,7 +203,7 @@ const Ranking = (props) => {
         </div>
         <div className="w-full order-5 lg:w-2/3 px-4 mt-4">
           <div className="container mx-auto">
-            {loading ? (<TableSkeleton />) : (
+            {loading || data.medals.length < 3 ? (<TableSkeleton />) : (
               <FilterSortTableWithPage dataI={data.medals} headers={headers} id={`ex-medals-`} size={7}/>
             )}
           </div>

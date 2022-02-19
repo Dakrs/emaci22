@@ -1,6 +1,7 @@
 import { HocFetcherWithoutId } from '@components/common/hocFetcher';
-import { FilterSortTableWithPage } from '@components/common/table'
-import Link from "next/link"
+import { FilterSortTableWithPage } from '@components/common/table';
+import Link from "next/link";
+import { AlertInfo } from '@components/common/alert'
 
 
 
@@ -57,6 +58,7 @@ const AvailResults = (props) => {
     }
   ]
 
+  
   if (data.resultados.length === 0 && data.combinadas.length === 0)
     return (
       <div className="w-full min-h-screen h-full bg-slate-100 flex justify-center items-center">
@@ -64,12 +66,13 @@ const AvailResults = (props) => {
       </div>
     )
 
+
   return (
     <div className="min-h-screen flex flex-col w-full bg-slate-100 px-4 py-6 sm:p-10 lg:p-16">
       <Link href="/collective" passHref>
-        <a className="w-full text-white bg-emerald-500 rounded-lg mb-4">
+        <a className="w-full text-white bg-emerald-400 rounded-lg mb-4">
             <div className="container flex items-center justify-between px-6 py-4 mx-auto">
-                <div className="flex">
+                <div className="flex items-center">
                     <svg viewBox="0 0 40 40" className="w-6 h-6 fill-current">
                         <path d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM21.6667 28.3333H18.3334V25H21.6667V28.3333ZM21.6667 21.6666H18.3334V11.6666H21.6667V21.6666Z"></path>
                     </svg>
@@ -79,6 +82,7 @@ const AvailResults = (props) => {
             </div>
         </a>
       </Link>
+      <AlertInfo href="/#rankings" text="Check the medal's scoreboard." />
       {data.resultados.length > 0 && (
         <>
           <div className="w-full flex flex-col justify-center md:flex-row md:justify-between">

@@ -1,3 +1,4 @@
+import React, {useEffect,useRef} from 'react'
 import TimeLeft from '@components/frontpage/timeLeft'
 import Title from '@components/frontpage/title'
 import PoweredBy from '@components/frontpage/poweredby'

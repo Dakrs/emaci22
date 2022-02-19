@@ -22,6 +22,7 @@ module.exports = {
         '8/10': '80%',
         '9/10': '90%',
         'vw-90': '90vw',
+        'vw-80': '80vw',
         'vw-10': '10vw',
         'custom': '31%'
       },
@@ -43,7 +44,14 @@ module.exports = {
       },
       inset: {
         '1/10': '10%',
-        '2/10': '20%'
+        '2/10': '20%',
+        '9/10': '90%',
+        'vw-9/10': '90vw',
+        'vh-9/10': '90vh',
+        'vh-85': '85vh',
+        'vw-5': '5vw',
+        'vw-5-': '-5vw',
+        'vw-15': '15vw',
       },
       fontFamily: {
         'title': '"Montserrat Alternates",sans-serif'

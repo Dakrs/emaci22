@@ -62,7 +62,7 @@ const VerticalCardSkeleton = ({size,rounded}) => {
 //<div className="bg-gray-200 w-full h-4 animate-pulse rounded-full" ></div> col-span-2
 const TableSkeleton = (props) => {
   return (
-    <div className="w-full p-4 max-w-md shadow-xl bg-white rounded-2xl">
+    <div className="w-full p-4 max-w-md shadow-xl bg-white rounded-2xl mx-auto">
       <div className="grid grid-cols-3 gap-4">
         <div className="col-span-3 bg-gray-200 h-4 animate-pulse rounded-full"></div>
         <div className="bg-gray-200 h-4 animate-pulse rounded-full"></div>
