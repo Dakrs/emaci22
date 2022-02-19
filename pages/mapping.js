@@ -61,7 +61,7 @@ const Mapping = (props) => {
 
   return (
     <TemplateSection title="Mapping" subtitle="Search for a competition using a category" center={true}>
-      <GenericDisclose data={data.map} id="tap-mapping" render={post} />
+      <GenericDisclose data={data.map} id="tap-mapping" render={post} keyName={(item) => (item.prova)} dataFunc={(item) => (item.mapa)} />
     </TemplateSection>
   )
 }
