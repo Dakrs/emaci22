@@ -248,6 +248,15 @@ const TBRowFull = ({event}) => {
   )
 }
 
+function get_number_of_days(){
+  const date1 = new Date("02/20/2022");
+  const today = new Date()
+  var difference_In_Time = today.getTime() - date1.getTime();
+  var difference_In_Days = Math.floor(difference_In_Time / (1000 * 3600 * 24));
+
+  return difference_In_Days;
+}
+
 function validate_day(day){
 
   var intDay = parseInt(day)
@@ -261,8 +270,9 @@ const Schedule = (props) => {
   const { day,searchq } = router.query
 
   //var st_index = validate_day(day) ? parseInt(day) : 0;
+  const stdIndex = get_number_of_days()
 
-  const [index,setIndex] = useState(0);
+  const [index,setIndex] = useState(stdIndex);
   const [search,setSearch] = useState('');
   const [sorting,setSorting] = useState([0,0,0])
 
