@@ -54,7 +54,8 @@ const translate2to3 = (code) => {
     'USA': 'US',
     'CAN': 'CA',
     'ISR': 'IL',
-    'PAN': 'PA'
+    'PAN': 'PA',
+    'CHL': 'CL'
   }
 
   if (code in lib){

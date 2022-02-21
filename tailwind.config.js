@@ -61,6 +61,9 @@ module.exports = {
         '44': '11rem',
         '48': '12rem'
       },
+      minHeight: {
+        '50': '10rem'
+      },
       colors: {
         table: '#F9FAFB',
       },

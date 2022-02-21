@@ -94,7 +94,7 @@ const FilterSortTable = ({dataI,headers,id}) => {
 
   return (
     <div className="min-w-full shadow-lg rounded-xl overflow-x-auto">
-     <table {...getTableProps()} className="min-w-full leading-normal">
+     <table id={id} {...getTableProps()} className="min-w-full leading-normal">
        <thead className="bg-zinc-50 rounded-xl">
          <tr>
            <th className="px-5 py-3  text-slate-800  text-center text-sm md:text-lg uppercase font-bold">
@@ -203,7 +203,7 @@ const FilterSortTableWithPage = ({dataI,headers,id,size}) => {
   return (
     <>
       <div className="min-w-full shadow-lg rounded-xl overflow-x-auto">
-       <table {...getTableProps()} className="min-w-full leading-normal">
+       <table id={id} {...getTableProps()} className="min-w-full leading-normal">
          <thead className="bg-zinc-50 rounded-xl">
            <tr>
              <th className="px-5 py-3  text-slate-800  text-center text-sm md:text-lg uppercase font-bold">
