@@ -30,7 +30,6 @@ const translate2to3 = (code) => {
     'LUX': 'LU',
     'MLT': 'MT',
     'MDA': 'MD',
-    'MCO': 'MC',
     'MNE': 'ME',
     'NLD': 'NL',
     'MKD': 'MK',
@@ -49,6 +48,13 @@ const translate2to3 = (code) => {
     'TUR': 'TR',
     'UKR': 'UA',
     'GBR': 'GB',
+    'MON': 'MC',
+    'HKG': 'HK',
+    'BAR': 'BB',
+    'USA': 'US',
+    'CAN': 'CA',
+    'ISR': 'IL',
+    'PAN': 'PA'
   }
 
   if (code in lib){
