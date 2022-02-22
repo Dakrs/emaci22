@@ -111,12 +111,13 @@ const RunSeries = ({data,id}) => {
           </div>
           {series[item].foto && (
           <Modal title={`Photofinish of serie ${item}`} state={isOpen[i]} close={() => closeI(i)}>
-            <div className="w-full h-24 md:h-32 relative">
+            <div className="w-full relative">
               <Image
+                width={400}
+                height={200}
                 src={series[item].foto}
                 alt={`Photofinish-${id}-serie-${i}`}
-                layout="fill"
-                objectFit="cover"
+                objectFit="contain"
               />
             </div>
           </Modal>

@@ -48,6 +48,9 @@ const TimeLeft = (props) => {
     delay: 1000,
   })
 
+  if (timeLeft.days === 0 && timeLeft.hours === 0 && timeLeft.minutes === 0 && timeLeft.seconds === 0)
+    return null
+
   return (
     <div className="w-full md:w-auto mt-12 px-5">
        <animated.div style={propsh2} className="flex justify-center text-white text-center">
