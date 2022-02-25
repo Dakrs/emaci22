@@ -96,6 +96,15 @@ const ResultsMulti = (props) => {
         return 'Bronze'
     }
 
+    const temp_results = {}
+
+    for(var i = 0; i < data.prova.provas_realizadas; i++){
+      const arr = processed_data.map((item) => item[`res${i}`])
+      arr.sort((a, b) => b - a)
+
+      temp_results[`res${i}`] = arr
+    }
+
     const dataAt = processed_data.map((item) => {
       var pos = item.posicao[1] ? `${item.posicao[0]} (${getmedalha(item.posicao[1])})` : item.posicao[0];
 
@@ -104,7 +113,10 @@ const ResultsMulti = (props) => {
       ]
 
       for(var i = 0; i < data.prova.provas_realizadas; i++){
-        temp.push(item[`res${i}`])
+        var score = item[`res${i}`]
+        var pos = temp_results[`res${i}`].findIndex((ele) => ele === score)
+
+        temp.push(`${score} (${pos+1})`)
       }
 
       return temp
