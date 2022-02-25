@@ -6,6 +6,8 @@ import { HocFetcher } from '@components/common/hocFetcher';
 import Link from "next/link";
 import { medal } from '@components/athletes/medals';
 import { TitleSection } from '@components/common/templateSection';
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 const ResultsMulti = (props) => {
 
@@ -63,7 +65,7 @@ const ResultsMulti = (props) => {
       if (i < data.prova.provas_realizadas){
         entry[`res${i}`] = entry.resultados[i]
       }
-      else{
+      else {
         entry[`res${i}`] = ""
       }
     }
@@ -72,14 +74,63 @@ const ResultsMulti = (props) => {
     processed_data.push(entry)
   });
 
+  const exportPDF = (stream,headers,name) => {
+    const unit = "pt";
+    const size = "A4"; // Use A1, A2, A3 or A4
+    const orientation = "landscape"; // portrait or landscape
+
+    const marginLeft = 40;
+    const docheaders = [headers.map((item) => item.Header)];
+
+    const doc = new jsPDF(orientation, unit, size);
+    doc.setFontSize(15);
+
+    const getmedalha = (type) => {
+      if (type === 'G')
+        return 'Gold'
+
+      if (type === 'S')
+        return 'Silver'
+
+      if (type === 'B')
+        return 'Bronze'
+    }
+
+    const dataAt = processed_data.map((item) => {
+      var pos = item.posicao[1] ? `${item.posicao[0]} (${getmedalha(item.posicao[1])})` : item.posicao[0];
+
+      const temp = [
+        pos, item.dorsal, item.nome, item.clube, item.pontos
+      ]
+
+      for(var i = 0; i < data.prova.provas_realizadas; i++){
+        temp.push(item[`res${i}`])
+      }
+
+      return temp
+    })
+
+    const content = {
+      startY: 50,
+      head: docheaders,
+      body: dataAt
+    };
+
+    doc.text(name, marginLeft, 40);
+    doc.autoTable(content);
+    doc.save(`${name}.pdf`)
+  }
 
 
   return (
     <div className="min-h-screen flex flex-col w-full bg-slate-100 px-4 py-6 sm:p-10 lg:p-16">
       <TitleSection title={data.prova.nome} subtitle="Results" />
       <div className="w-full py-4">
-          <div className="container mx-auto">
+          <div className="container mx-auto mb-4">
             <FilterSortTable dataI={processed_data} headers={headers} id={`comb-results-${id}`}/>
+          </div>
+          <div onClick={() => exportPDF(processed_data,headers,data.prova.nome)} className="w-full bg-cyan-400 cursor-pointer hover:bg-cyan-500 rounded-md text-white text-center font-bold py-4">
+            Export results as pdf.
           </div>
       </div>
     </div>
