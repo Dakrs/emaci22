@@ -254,6 +254,9 @@ function get_number_of_days(){
   var difference_In_Time = today.getTime() - date1.getTime();
   var difference_In_Days = Math.floor(difference_In_Time / (1000 * 3600 * 24));
 
+  if (difference_In_Days > 7)
+    return 0;
+
   return difference_In_Days;
 }
 
